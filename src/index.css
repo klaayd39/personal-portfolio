@@ -689,10 +689,9 @@ textarea:focus-visible,
 /* ── Header ── */
 .rv-header {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .rv-name {
@@ -717,7 +716,7 @@ textarea:focus-visible,
   display: flex;
   flex-direction: column;
   gap: 6px;
-  text-align: right;
+  text-align: left;
   color: var(--text-faint);
   font-size: 0.85rem;
 }
@@ -1440,7 +1439,9 @@ textarea:focus-visible,
 
   /* ── Header ── */
   .rv-header {
-    gap: 0.5rem !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8pt !important;
     margin-bottom: 0 !important;
   }
 
@@ -1448,20 +1449,21 @@ textarea:focus-visible,
     background: none !important;
     -webkit-text-fill-color: #111827 !important;
     color: #111827 !important;
-    font-size: 17pt !important;
-    margin-bottom: 1pt !important;
+    font-size: 20pt !important;
+    margin-bottom: 2pt !important;
   }
 
   .rv-title {
-    font-size: 8.5pt !important;
-    color: #374151 !important;
+    font-size: 9pt !important;
+    color: #4b5563 !important;
     margin: 0 !important;
   }
 
   .rv-contact-block {
-    font-size: 7.5pt !important;
-    gap: 2px !important;
-    color: #374151 !important;
+    font-size: 8pt !important;
+    gap: 4px !important;
+    color: #4b5563 !important;
+    text-align: left !important;
   }
 
   /* ── Divider ── */
@@ -1472,7 +1474,7 @@ textarea:focus-visible,
 
   /* ── Contact links ── */
   .rv-contact-block a {
-    color: #374151 !important;
+    color: #4b5563 !important;
     text-decoration: none !important;
   }
 
