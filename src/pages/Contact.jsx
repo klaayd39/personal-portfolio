@@ -1,9 +1,15 @@
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import Lottie from '../components/SafeLottie'
 import useLottieUrl from '../hooks/useLottieUrl'
 import { supabase, isSupabaseConfigured } from '../supabaseClient'
 
 const LOTTIE_CONTACT_URL = 'https://assets9.lottiefiles.com/packages/lf20_u25cckyh.json'
+
+const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+const isEmailJSConfigured = !!(EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY)
 
 export default function Contact() {
   const contactAnimation = useLottieUrl(LOTTIE_CONTACT_URL)
@@ -15,6 +21,27 @@ export default function Contact() {
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  async function sendEmailNotification(formData) {
+    if (!isEmailJSConfigured) return
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name:    formData.name,
+          from_email:   formData.email,
+          message:      formData.message,
+          to_email:     'klydejosephy@gmail.com',
+          reply_to:     formData.email,
+        },
+        EMAILJS_PUBLIC_KEY
+      )
+    } catch (emailErr) {
+      // Non-blocking — don't fail the form if email fails
+      console.warn('EmailJS notification failed:', emailErr)
+    }
   }
 
   async function handleSubmit(e) {
@@ -51,6 +78,9 @@ export default function Contact() {
       if (error) {
         throw error
       }
+
+      // Fire email notification (non-blocking)
+      await sendEmailNotification(form)
 
       setSentName(form.name.split(' ')[0])
       setStatus('success')
