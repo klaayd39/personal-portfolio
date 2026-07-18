@@ -1374,24 +1374,25 @@ textarea:focus-visible,
 @media print {
   /* ── A4 page setup ── */
   @page {
-    size: 210mm 297mm;
-    margin: 8mm 10mm;
+    size: A4 portrait;
+    margin: 0;
   }
 
   /* ── Global reset ── */
   * {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
+    box-sizing: border-box;
   }
 
   html, body {
-    width: 210mm !important;
+    width: 100% !important;
     background: #ffffff !important;
     color: #111827 !important;
     font-size: 8.5pt !important;
     line-height: 1.35 !important;
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 12mm 15mm !important;
   }
 
   /* ── Hide non-resume elements ── */
