@@ -21,6 +21,7 @@
   --sidebar-w-tablet: 220px;   /* tablet  */
 
   /* Whitespace & Radius Improvements */
+  --page-padding:  clamp(1.5rem, 5vw, 80px);
   --section-gap:   clamp(100px, 12vw, 150px);
   --card-gap:      28px;
   --card-pad:      28px;
@@ -356,15 +357,17 @@ textarea:focus-visible {
 .main-content {
   flex: 1;
   min-width: 0;
-  padding: 80px clamp(1.5rem, 5vw, 80px);
+  padding: 80px 0 0 0;
   display: flex;
   flex-direction: column;
 }
 
 .page-wrap {
-  max-width: 1400px;
   width: 100%;
+  max-width: 1480px;
   margin: 0 auto;
+  padding-left: var(--page-padding);
+  padding-right: var(--page-padding);
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -376,18 +379,20 @@ textarea:focus-visible {
 .section-block {
   margin-bottom: var(--section-gap);
   position: relative;
+  width: 100%;
 }
 
 /* Alternative section background styling */
 .section-alt {
-  background: rgba(255, 255, 255, 0.015);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.015) 0%, rgba(99, 102, 241, 0.01) 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.03);
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  padding: 60px 0;
-  margin-left: -80px;
-  margin-right: -80px;
-  padding-left: 80px;
-  padding-right: 80px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  margin-left: calc(-1 * var(--page-padding));
+  margin-right: calc(-1 * var(--page-padding));
+  padding-left: var(--page-padding);
+  padding-right: var(--page-padding);
 }
 
 /* ─────────────────────────────────────────
