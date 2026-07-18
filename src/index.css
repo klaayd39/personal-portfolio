@@ -949,12 +949,20 @@ textarea:focus-visible,
 
 .contact-lottie {
   width: 100%;
-  height: 220px;
-  overflow: hidden;
+  height: 260px;
   margin-bottom: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible !important;
+}
+
+.contact-lottie > div {
+  overflow: visible !important;
+}
+
+.contact-lottie svg {
+  overflow: visible !important;
 }
 
 .contact-card-modern {
