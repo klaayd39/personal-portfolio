@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Lottie from '../components/SafeLottie'
 import useLottieUrl from '../hooks/useLottieUrl'
+import { supabase, isSupabaseConfigured } from '../supabaseClient'
 
 const LOTTIE_CONTACT_URL = 'https://assets9.lottiefiles.com/packages/lf20_u25cckyh.json'
 
@@ -8,27 +9,57 @@ export default function Contact() {
   const contactAnimation = useLottieUrl(LOTTIE_CONTACT_URL)
 
   const [form, setForm] = useState({ name: '', email: '', message: '' })
-  const [status, setStatus] = useState(null) // null | 'error' | 'success'
+  const [status, setStatus] = useState(null) // null | 'error' | 'success' | 'submitting' | 'missing-env'
   const [sentName, setSentName] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
 
   function handleChange(e) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
+    setErrorMessage('')
 
     if (!form.name || !form.email || !form.message) {
       setStatus('error')
+      setErrorMessage('Please fill in all fields before sending.')
       return
     }
 
-    // NOTE: this is a front-end-only simulation, matching the original
-    // Streamlit demo. To actually deliver messages, wire this up to a
-    // service like Formspree, Resend, or EmailJS.
-    setSentName(form.name.split(' ')[0])
-    setStatus('success')
-    setForm({ name: '', email: '', message: '' })
+    if (!isSupabaseConfigured) {
+      // Supabase is not configured yet. Fall back to demo mode.
+      setSentName(form.name.split(' ')[0])
+      setStatus('missing-env')
+      setForm({ name: '', email: '', message: '' })
+      return
+    }
+
+    setStatus('submitting')
+
+    try {
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert([
+          { 
+            name: form.name, 
+            email: form.email, 
+            message: form.message 
+          }
+        ])
+
+      if (error) {
+        throw error
+      }
+
+      setSentName(form.name.split(' ')[0])
+      setStatus('success')
+      setForm({ name: '', email: '', message: '' })
+    } catch (err) {
+      console.error('Error inserting message:', err)
+      setStatus('error')
+      setErrorMessage(err.message || 'Failed to send message via Supabase. Make sure your database has a "contact_messages" table.')
+    }
   }
 
   return (
@@ -55,10 +86,18 @@ export default function Contact() {
         <h3 className="contact-form-title">Send a Direct Message</h3>
 
         {status === 'error' && (
-          <p className="form-error">Please fill in all fields before sending.</p>
+          <p className="form-error">{errorMessage}</p>
         )}
         {status === 'success' && (
-          <p className="form-success">Successfully sent! Talk soon, {sentName}.</p>
+          <p className="form-success">Successfully sent! Message stored in Supabase. Talk soon, {sentName}.</p>
+        )}
+        {status === 'missing-env' && (
+          <div className="form-success" style={{ background: 'rgba(234, 179, 8, 0.1)', color: '#eab308', borderColor: 'rgba(234, 179, 8, 0.3)' }}>
+            <p style={{ margin: 0, fontWeight: 700 }}>⚠️ Supabase Not Connected (Demo Mode)</p>
+            <p style={{ margin: '5px 0 0', fontSize: '0.85rem' }}>
+              Successfully simulated! Create a <code>.env</code> file in your project root with your <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> to enable real submissions.
+            </p>
+          </div>
         )}
 
         <form onSubmit={handleSubmit}>
@@ -71,6 +110,7 @@ export default function Contact() {
               placeholder="e.g. John Doe"
               value={form.name}
               onChange={handleChange}
+              disabled={status === 'submitting'}
             />
           </div>
 
@@ -83,6 +123,7 @@ export default function Contact() {
               placeholder="e.g. john@company.com"
               value={form.email}
               onChange={handleChange}
+              disabled={status === 'submitting'}
             />
           </div>
 
@@ -95,10 +136,17 @@ export default function Contact() {
               placeholder="Tell me about your project or inquiry..."
               value={form.message}
               onChange={handleChange}
+              disabled={status === 'submitting'}
             />
           </div>
 
-          <button type="submit" className="submit-btn">🚀 Deploy Message</button>
+          <button 
+            type="submit" 
+            className="submit-btn" 
+            disabled={status === 'submitting'}
+          >
+            {status === 'submitting' ? '⚡ Storing Message...' : '🚀 Deploy Message'}
+          </button>
         </form>
       </div>
     </div>
