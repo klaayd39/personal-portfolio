@@ -821,6 +821,12 @@ textarea:focus-visible,
   margin-bottom: 4px;
 }
 
+.rv-job-tech {
+  font-size: 0.8rem;
+  color: var(--secondary);
+  margin: -4px 0 10px;
+}
+
 /* ── Project entries ── */
 .rv-project {
   margin-bottom: 1.25rem;
@@ -828,6 +834,13 @@ textarea:focus-visible,
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 12px;
+}
+
+.rv-project-tech {
+  font-size: 0.78rem;
+  color: var(--secondary);
+  margin: 0 0 8px 0;
+  font-weight: 500;
 }
 
 .rv-project-header {
@@ -1512,7 +1525,13 @@ textarea:focus-visible,
   .rv-job-company {
     font-size: 7.5pt !important;
     color: #2563eb !important;
-    margin: 1pt 0 3pt !important;
+    margin: 1pt 0 2pt !important;
+  }
+
+  .rv-job-tech {
+    font-size: 7pt !important;
+    color: #1d4ed8 !important;
+    margin: 0 0 4pt !important;
   }
 
   .rv-job-list {
@@ -1543,6 +1562,12 @@ textarea:focus-visible,
   .rv-project-name {
     font-size: 8pt !important;
     color: #111827 !important;
+  }
+
+  .rv-project-tech {
+    font-size: 6.5pt !important;
+    color: #1d4ed8 !important;
+    margin: 0 0 2pt 0 !important;
   }
 
   .rv-project-tag {

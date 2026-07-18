@@ -28,7 +28,7 @@ export default function Resume() {
             <a href="mailto:klydejosephy@gmail.com">📧 klydejosephy@gmail.com</a>
             <span>📞 +63 945 592 7782</span>
             <a href="https://github.com/klaayd39" target="_blank" rel="noreferrer">💻 github.com/klaayd39</a>
-            <a href="https://www.linkedin.com/in/klyde-joseph-yabo-a38286373/" target="_blank" rel="noreferrer">🔗 linkedin.com/in/klyde-joseph-yabo</a>
+            <a href="https://www.linkedin.com/in/klyde-joseph-yabo-a38286373/" target="_blank" rel="noreferrer">🔗 linkedin.com/in/klyde-joseph-yabo-a38286373</a>
             <a href="https://klyde-portfolio.vercel.app" target="_blank" rel="noreferrer">🌐 klyde-portfolio.vercel.app</a>
             <span>📍 Malaybalay City, Philippines</span>
           </div>
@@ -56,26 +56,18 @@ export default function Resume() {
               </p>
             </section>
 
-            {/* Education – moved higher for recent graduate */}
+            {/* Education – simplified, showing only BS degree for professional focus */}
             <section className="rv-section">
               <h2 className="rv-section-title">
                 <span className="rv-section-icon">🎓</span> Education
               </h2>
-              <div className="rv-edu rv-edu-spaced">
+              <div className="rv-edu">
                 <span className="rv-edu-degree">Bukidnon State University</span>
                 <span className="rv-edu-school">Bachelor of Science in Information Technology (2020 – 2024)</span>
               </div>
-              <div className="rv-edu rv-edu-spaced">
-                <span className="rv-edu-degree">STI Malaybalay</span>
-                <span className="rv-edu-school">TVL – Information Technology, Senior High School (2018 – 2020)</span>
-              </div>
-              <div className="rv-edu">
-                <span className="rv-edu-degree">Bukidnon National High School</span>
-                <span className="rv-edu-school">Junior High School Special Program in Sports (2014 – 2018)</span>
-              </div>
             </section>
 
-            {/* Experience – with quantified achievements */}
+            {/* Experience – with quantified achievements and technologies line */}
             <section className="rv-section">
               <h2 className="rv-section-title">
                 <span className="rv-section-icon">💼</span> Experience
@@ -87,6 +79,9 @@ export default function Resume() {
                   <span className="rv-job-period">2022 – Present</span>
                 </div>
                 <span className="rv-job-company">Freelance &amp; Independent Projects</span>
+                <p className="rv-job-tech">
+                  <strong>Technologies:</strong> Python, JavaScript, React, REST APIs, Playwright, WebSockets, OSC, Git, Linux
+                </p>
                 <ul className="rv-job-list">
                   <li>Built <strong>Bombo News Intel</strong>, an AI-powered news monitoring dashboard that aggregates 50+ live intelligence feeds, reducing manual news tracking time by approximately 80%.</li>
                   <li>Developed <strong>Nautel AUI Monitor</strong>, a real-time transmitter health dashboard with custom telemetry alerts, enabling 24/7 unattended monitoring and reducing equipment downtime.</li>
@@ -103,6 +98,9 @@ export default function Resume() {
                   <span className="rv-job-period">Freelance</span>
                 </div>
                 <span className="rv-job-company">General IT Services</span>
+                <p className="rv-job-tech">
+                  <strong>Technologies:</strong> Hardware Diagnostics, Network Configuration, Technical Documentation, Video Editing
+                </p>
                 <ul className="rv-job-list">
                   <li>Performed diagnostic troubleshooting, component upgrades, and repair services for 30+ PCs and office printers.</li>
                   <li>Installed operating systems, software packages, and system drivers, servicing 50+ local clients.</li>
@@ -111,7 +109,7 @@ export default function Resume() {
               </div>
             </section>
 
-            {/* Projects – with full URLs */}
+            {/* Projects – with full clickable URLs and Tech Stacks */}
             <section className="rv-section">
               <h2 className="rv-section-title">
                 <span className="rv-section-icon">🚀</span> Key Projects
@@ -122,42 +120,49 @@ export default function Resume() {
                   name: 'X32 Remote Toggle',
                   tag: 'Automation',
                   url: 'https://github.com/klaayd39/x32-channel-remote-toggle',
+                  tech: 'Python • OSC • Behringer X32 API',
                   desc: 'OSC control system for Behringer X32 mixers with sub-50ms real-time state synchronization.',
                 },
                 {
                   name: 'Media Automator',
                   tag: 'Automation',
                   url: 'https://github.com/klaayd39/obs-media-automator',
+                  tech: 'Python • OBS WebSocket API • Batch Scripting',
                   desc: 'Python-driven workflow engine for instant broadcast asset deployment and OBS source management.',
                 },
                 {
                   name: 'OBS Scene Autosort',
                   tag: 'Automation',
                   url: 'https://github.com/klaayd39/obs-scene-autosort',
+                  tech: 'Python • OBS WebSocket API',
                   desc: 'Dynamic scene indexing tool that reduced production setup time by ~70% for complex live shows.',
                 },
                 {
                   name: 'Drama Report Gen',
                   tag: 'Automation',
                   url: 'https://github.com/klaayd39/Automatic-Drama-Report-Document-Generation',
+                  tech: 'Python • docx • Streamlit',
                   desc: 'Automated documentation engine that cut manual broadcast log data entry by ~90%.',
                 },
                 {
                   name: 'Weather Overlay',
                   tag: 'Broadcast',
                   url: 'https://github.com/klaayd39/obs-bukidnon-weather-overlay',
+                  tech: 'JavaScript • HTML/CSS • SVG • OpenWeather API',
                   desc: 'Vector-based weather visualization with real-time REST API integration for live stream overlays.',
                 },
                 {
                   name: 'Nautel AUI Monitor',
                   tag: 'Broadcast',
                   url: 'https://github.com/klaayd39/nautel-aui-monitor',
+                  tech: 'Python • Playwright • Discord Webhooks',
                   desc: 'Real-time transmitter health monitoring dashboard with custom telemetry alerts.',
                 },
                 {
                   name: 'Bombo News Intel',
                   tag: 'Intelligence',
                   url: 'https://bombo-radyo.vercel.app',
+                  tech: 'React • Python • Gemini API • REST API • TailwindCSS',
                   desc: 'AI-powered news monitoring dashboard aggregating 50+ live intelligence feeds.',
                 },
               ].map((p) => (
@@ -166,6 +171,7 @@ export default function Resume() {
                     <span className="rv-project-name">{p.name}</span>
                     <span className="rv-project-tag">{p.tag}</span>
                   </div>
+                  <p className="rv-project-tech">{p.tech}</p>
                   <p className="rv-project-desc">{p.desc}</p>
                   <a
                     className="rv-project-link"
@@ -173,7 +179,7 @@ export default function Resume() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    🔗 {p.url.replace('https://', '')}
+                    🔗 {p.url}
                   </a>
                 </div>
               ))}
