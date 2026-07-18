@@ -1,4 +1,4 @@
-const SKILLS = ['Python', 'HTML', 'Playwright', 'CSS', 'Javascript', 'API Design']
+import { SKILLS } from '../data/skills'
 
 export default function Home() {
   return (
