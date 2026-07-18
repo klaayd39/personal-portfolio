@@ -28,6 +28,7 @@ export default function Resume() {
             <a href="mailto:klydejosephy@gmail.com">📧 klydejosephy@gmail.com</a>
             <span>📞 +63 945 592 7782</span>
             <a href="https://github.com/klaayd39" target="_blank" rel="noreferrer">💻 github.com/klaayd39</a>
+            <a href="https://www.linkedin.com/in/klyde-joseph-yabo-a38286373/" target="_blank" rel="noreferrer">🔗 linkedin.com/in/klyde-joseph-yabo</a>
             <a href="https://klyde-portfolio.vercel.app" target="_blank" rel="noreferrer">🌐 klyde-portfolio.vercel.app</a>
             <span>📍 Malaybalay City, Philippines</span>
           </div>
