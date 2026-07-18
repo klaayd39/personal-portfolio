@@ -944,19 +944,24 @@ textarea:focus-visible,
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 3rem;
-  align-items: start;
+  align-items: center;
 }
 
 .contact-lottie {
   width: 100%;
-  height: 240px;
+  height: 220px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contact-card-modern {
   background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  padding: 40px;
+  padding: 36px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
@@ -990,10 +995,10 @@ textarea:focus-visible,
 }
 
 .contact-form-title {
-  margin-top: 0.5rem;
+  margin-top: 0;
   margin-bottom: 1.25rem;
-  font-size: 1.3rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   color: #f8fafc;
 }
 
@@ -1020,6 +1025,7 @@ textarea:focus-visible,
   font-family: inherit;
   font-size: 0.95rem;
   resize: vertical;
+  width: 100%;
 }
 
 .form-field input::placeholder,
@@ -1035,15 +1041,17 @@ textarea:focus-visible,
 }
 
 .submit-btn {
+  width: 100%;
   border-radius: 15px;
   background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
   color: white;
   border: none;
-  padding: 0.8rem 1.6rem;
-  font-weight: 600;
-  font-size: 0.95rem;
+  padding: 0.85rem 1.6rem;
+  font-weight: 700;
+  font-size: 1rem;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
+  margin-top: 0.25rem;
 }
 
 .submit-btn:hover {
@@ -1068,6 +1076,7 @@ textarea:focus-visible,
   padding: 0.9rem 1rem;
   border-radius: 12px;
   font-size: 0.9rem;
+  margin-bottom: 1rem;
 }
 
 /* ─────────────────────────────────────────
@@ -1251,6 +1260,11 @@ textarea:focus-visible,
   .contact-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .contact-lottie {
+    height: 160px;
+    margin-bottom: 0.75rem;
   }
 
   .project-grid {
