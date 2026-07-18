@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import Lottie from './SafeLottie'
 import useLottieUrl from '../hooks/useLottieUrl'
 import { NAV_ITEMS } from './navItems'
@@ -10,6 +10,16 @@ export default function Sidebar() {
   const navAnimation = useLottieUrl(LOTTIE_NAV_URL)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
+
+  function handleDownloadResume() {
+    if (location.pathname === '/resume') {
+      window.print()
+    } else {
+      navigate('/resume')
+      setTimeout(() => window.print(), 400)
+    }
+  }
 
   // Close drawer when route changes
   useEffect(() => {
@@ -26,7 +36,7 @@ export default function Sidebar() {
     return () => { document.body.style.overflow = '' }
   }, [drawerOpen])
 
-  const SidebarContent = ({ onLinkClick }) => (
+  const SidebarContent = ({ onLinkClick, onDownload }) => (
     <>
       <div className="sidebar-lottie">
         {navAnimation && (
@@ -55,7 +65,7 @@ export default function Sidebar() {
 
         <button
           className="download-btn"
-          onClick={() => { window.print() }}
+          onClick={onDownload}
         >
           📥 Download Resume
         </button>
@@ -69,7 +79,7 @@ export default function Sidebar() {
     <>
       {/* Desktop / Tablet Sidebar */}
       <aside className="sidebar" aria-label="Main navigation">
-        <SidebarContent onLinkClick={undefined} />
+        <SidebarContent onLinkClick={undefined} onDownload={handleDownloadResume} />
       </aside>
 
       {/* Mobile Hamburger Bar */}
@@ -107,7 +117,7 @@ export default function Sidebar() {
         >
           ✕
         </button>
-        <SidebarContent onLinkClick={() => setDrawerOpen(false)} />
+        <SidebarContent onLinkClick={() => setDrawerOpen(false)} onDownload={() => { setDrawerOpen(false); handleDownloadResume() }} />
       </aside>
     </>
   )
