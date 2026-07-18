@@ -28,11 +28,6 @@ export default function Home() {
     setTransformStyle('')
   }
 
-  function handleDownloadResume() {
-    navigate('/resume')
-    setTimeout(() => window.print(), 400)
-  }
-
   return (
     <div className="page-wrap">
       <div className="section-block">
@@ -58,9 +53,9 @@ export default function Home() {
                 <Link to="/projects" className="btn-primary">
                   View Projects <span className="icon">→</span>
                 </Link>
-                <button onClick={handleDownloadResume} className="btn-outline">
-                  📥 Download Resume
-                </button>
+                <Link to="/contact" className="btn-outline">
+                  Get in Touch
+                </Link>
               </div>
             </ScrollReveal>
           </div>

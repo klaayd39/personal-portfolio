@@ -1,13 +1,6 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
-  const navigate = useNavigate()
-
-  function handleDownloadResume() {
-    navigate('/resume')
-    setTimeout(() => window.print(), 400)
-  }
-
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -25,9 +18,9 @@ export default function Footer() {
             <Link to="/contact" className="btn-primary">
               Get in Touch <span className="icon">→</span>
             </Link>
-            <button onClick={handleDownloadResume} className="btn-outline">
-              📥 Download Resume
-            </button>
+            <Link to="/resume" className="btn-outline">
+              📄 View Resume
+            </Link>
           </div>
         </div>
 
