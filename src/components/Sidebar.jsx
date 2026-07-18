@@ -53,14 +53,12 @@ export default function Sidebar() {
       <div className="sidebar-bottom">
         <hr className="sidebar-divider" />
 
-        <a
+        <button
           className="download-btn"
-          href="/resume.jpg"
-          download="Klyde_Yabo_Resume.jpg"
-          onClick={onLinkClick}
+          onClick={() => { window.print() }}
         >
           📥 Download Resume
-        </a>
+        </button>
 
         <p className="sidebar-footer-note">© {new Date().getFullYear()} Klyde Joseph Yabo</p>
       </div>

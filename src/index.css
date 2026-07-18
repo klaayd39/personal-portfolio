@@ -922,6 +922,10 @@ textarea:focus-visible,
   gap: 4px;
 }
 
+.rv-edu-spaced {
+  margin-bottom: 1rem;
+}
+
 .rv-edu-degree {
   font-weight: 700;
   font-size: 0.9rem;
@@ -1342,23 +1346,32 @@ textarea:focus-visible,
 }
 
 /* ─────────────────────────────────────────
-   PRINT / PDF EXPORT
+   PRINT / PDF EXPORT  –  A4 (210 × 297 mm)
 ───────────────────────────────────────── */
 @media print {
-  /* A4 page setup */
+  /* ── A4 page setup ── */
   @page {
-    size: A4 portrait;
-    margin: 12mm 14mm;
+    size: 210mm 297mm;
+    margin: 8mm 10mm;
   }
 
-  /* Reset background for printing */
+  /* ── Global reset ── */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   html, body {
+    width: 210mm !important;
     background: #ffffff !important;
     color: #111827 !important;
-    font-size: 10pt;
+    font-size: 8.5pt !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* Hide everything except the resume card */
+  /* ── Hide non-resume elements ── */
   .sidebar,
   .drawer-sidebar,
   .drawer-overlay,
@@ -1368,7 +1381,7 @@ textarea:focus-visible,
     display: none !important;
   }
 
-  /* Remove shell layout so resume takes full width */
+  /* ── Strip shell layout ── */
   .app-shell {
     display: block !important;
   }
@@ -1376,107 +1389,225 @@ textarea:focus-visible,
   .main-content {
     padding: 0 !important;
     display: block !important;
+    margin: 0 !important;
   }
 
   .page-wrap {
     max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   .resume-page {
     max-width: 100% !important;
     margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* Card: flat white, full width */
+  /* ── Resume card: flat, full-width ── */
   .resume-card {
     background: #ffffff !important;
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     padding: 0 !important;
+    margin: 0 !important;
   }
 
-  /* Force dark text on white */
+  /* ── Header ── */
+  .rv-header {
+    gap: 0.5rem !important;
+    margin-bottom: 0 !important;
+  }
+
   .rv-name {
     background: none !important;
     -webkit-text-fill-color: #111827 !important;
     color: #111827 !important;
-    font-size: 22pt !important;
+    font-size: 17pt !important;
+    margin-bottom: 1pt !important;
   }
 
-  .rv-title,
-  .rv-contact-block,
-  .rv-text,
-  .rv-job-list,
-  .rv-project-desc,
-  .rv-spec-list li,
-  .rv-edu-school {
+  .rv-title {
+    font-size: 8.5pt !important;
     color: #374151 !important;
+    margin: 0 !important;
+  }
+
+  .rv-contact-block {
+    font-size: 7.5pt !important;
+    gap: 2px !important;
+    color: #374151 !important;
+  }
+
+  /* ── Divider ── */
+  .rv-divider {
+    border-top-color: #d1d5db !important;
+    margin: 8pt 0 !important;
+  }
+
+  /* ── Two-column body ── */
+  .rv-body {
+    grid-template-columns: 1fr 190px !important;
+    gap: 16pt !important;
+  }
+
+  /* ── Sections ── */
+  .rv-section {
+    margin-bottom: 8pt !important;
   }
 
   .rv-section-title {
-    color: #2563eb !important;
-    border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 3pt;
+    color: #1d4ed8 !important;
+    font-size: 7.5pt !important;
+    letter-spacing: 1.5px !important;
+    border-bottom: 0.5pt solid #d1d5db;
+    padding-bottom: 2pt !important;
+    margin-bottom: 5pt !important;
   }
 
-  .rv-job-title,
-  .rv-project-name,
-  .rv-edu-degree {
-    color: #111827 !important;
+  .rv-section-icon {
+    font-size: 7.5pt !important;
   }
 
-  .rv-job-company {
-    color: #2563eb !important;
-  }
-
-  .rv-project-link {
-    color: #2563eb !important;
-  }
-
-  /* Job left border stays visible */
-  .rv-job {
-    border-left-color: #6366f1 !important;
-  }
-
-  /* Project card: light border */
-  .rv-project {
-    background: #f9fafb !important;
-    border-color: #e5e7eb !important;
-  }
-
-  .rv-project-tag {
-    background: #eff6ff !important;
-    color: #2563eb !important;
-    border-color: #bfdbfe !important;
-  }
-
-  /* Skill pills: light */
-  .rv-skill-pill {
-    background: #f3f4f6 !important;
-    border-color: #e5e7eb !important;
+  /* ── Text / paragraphs ── */
+  .rv-text {
+    font-size: 8pt !important;
+    line-height: 1.4 !important;
     color: #374151 !important;
   }
 
+  /* ── Job entries ── */
+  .rv-job {
+    margin-bottom: 7pt !important;
+    padding-left: 6pt !important;
+    border-left: 1.5pt solid #6366f1 !important;
+  }
+
+  .rv-job-title {
+    font-size: 8.5pt !important;
+    color: #111827 !important;
+  }
+
+  .rv-job-period {
+    font-size: 7pt !important;
+  }
+
+  .rv-job-company {
+    font-size: 7.5pt !important;
+    color: #2563eb !important;
+    margin: 1pt 0 3pt !important;
+  }
+
+  .rv-job-list {
+    font-size: 7.5pt !important;
+    line-height: 1.35 !important;
+    color: #374151 !important;
+    padding-left: 10pt !important;
+    margin: 0 !important;
+  }
+
+  .rv-job-list li {
+    margin-bottom: 1pt !important;
+  }
+
+  /* ── Project entries ── */
+  .rv-project {
+    margin-bottom: 5pt !important;
+    padding: 5pt 7pt !important;
+    background: #f9fafb !important;
+    border: 0.5pt solid #e5e7eb !important;
+    border-radius: 4pt !important;
+  }
+
+  .rv-project-header {
+    margin-bottom: 2pt !important;
+  }
+
+  .rv-project-name {
+    font-size: 8pt !important;
+    color: #111827 !important;
+  }
+
+  .rv-project-tag {
+    font-size: 6pt !important;
+    padding: 1pt 5pt !important;
+    background: #eff6ff !important;
+    color: #2563eb !important;
+    border-color: #bfdbfe !important;
+    border-radius: 3pt !important;
+  }
+
+  .rv-project-desc {
+    font-size: 7pt !important;
+    line-height: 1.3 !important;
+    color: #374151 !important;
+    margin: 0 0 2pt !important;
+  }
+
+  .rv-project-link {
+    font-size: 6.5pt !important;
+    color: #2563eb !important;
+  }
+
+  /* ── Skills (right column) ── */
+  .rv-skill-group {
+    margin-bottom: 6pt !important;
+  }
+
   .rv-skill-group-label {
+    font-size: 6.5pt !important;
     color: #6b7280 !important;
+    margin-bottom: 3pt !important;
+  }
+
+  .rv-skill-pills {
+    gap: 3pt !important;
+  }
+
+  .rv-skill-pill {
+    font-size: 6.5pt !important;
+    padding: 2pt 6pt !important;
+    background: #f3f4f6 !important;
+    border: 0.5pt solid #e5e7eb !important;
+    color: #374151 !important;
+    border-radius: 100px !important;
+  }
+
+  /* ── Specialisations ── */
+  .rv-spec-list {
+    gap: 2pt !important;
+  }
+
+  .rv-spec-list li {
+    font-size: 7.5pt !important;
+    color: #374151 !important;
   }
 
   .rv-spec-list li::before {
     color: #6366f1 !important;
   }
 
-  .rv-divider {
-    border-top-color: #e5e7eb !important;
+  /* ── Education ── */
+  .rv-edu {
+    gap: 1pt !important;
   }
 
-  /* Keep two columns */
-  .rv-body {
-    grid-template-columns: 1fr 240px !important;
-    gap: 24pt !important;
+  .rv-edu-degree {
+    font-size: 8pt !important;
+    color: #111827 !important;
   }
 
-  /* Avoid breaking job/project entries across pages */
+  .rv-edu-school {
+    font-size: 7.5pt !important;
+    color: #374151 !important;
+  }
+
+  .rv-edu-spaced {
+    margin-bottom: 4pt !important;
+  }
+
+  /* ── Page break control ── */
   .rv-job,
   .rv-project,
   .rv-section {

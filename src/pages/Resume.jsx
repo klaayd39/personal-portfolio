@@ -237,11 +237,11 @@ export default function Resume() {
               <h2 className="rv-section-title">
                 <span className="rv-section-icon">🎓</span> Education
               </h2>
-              <div className="rv-edu" style={{ marginBottom: '1rem' }}>
+              <div className="rv-edu rv-edu-spaced">
                 <span className="rv-edu-degree">Bukidnon State University</span>
                 <span className="rv-edu-school">Bachelor of Science in Information Technology (2020 – 2024)</span>
               </div>
-              <div className="rv-edu" style={{ marginBottom: '1rem' }}>
+              <div className="rv-edu rv-edu-spaced">
                 <span className="rv-edu-degree">STI Malaybalay</span>
                 <span className="rv-edu-school">TVL – Information Technology, Senior High School (2018 – 2020)</span>
               </div>
