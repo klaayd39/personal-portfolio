@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const PROJECTS = [
   {
     title: 'X32 Remote Toggle',
@@ -43,12 +45,14 @@ const PROJECTS = [
   },
 ]
 
-const CATEGORY_ORDER = ['Automation', 'Broadcast Systems', 'Intelligence']
-
 export default function Projects() {
-  const categories = [...new Set(PROJECTS.map((p) => p.tag))].sort(
-    (a, b) => CATEGORY_ORDER.indexOf(a) - CATEGORY_ORDER.indexOf(b)
-  )
+  const [activeCategory, setActiveCategory] = useState('All')
+  
+  const categories = ['All', 'Automation', 'Broadcast Systems', 'Intelligence']
+
+  const filteredProjects = activeCategory === 'All' 
+    ? PROJECTS 
+    : PROJECTS.filter((p) => p.tag === activeCategory)
 
   return (
     <div>
@@ -60,25 +64,34 @@ export default function Projects() {
         </p>
       </div>
 
-      {categories.map((category) => (
-        <section key={category}>
-          <div className="category-pill">{category}</div>
-          <div className="project-grid">
-            {PROJECTS.filter((p) => p.tag === category).map((project) => (
-              <article className="project-card" key={project.title}>
-                <div>
-                  <h3 className="card-title">{project.title}</h3>
-                  <p className="card-desc">{project.desc}</p>
-                </div>
-                <a href={project.link} target="_blank" rel="noreferrer" className="card-link">
-                  <span>VIEW PROJECT</span>
-                  <span className="arrow-box" aria-hidden="true">→</span>
-                </a>
-              </article>
-            ))}
-          </div>
-        </section>
-      ))}
+      {/* Category filter tabs */}
+      <div className="filter-tabs">
+        {categories.map((category) => (
+          <button
+            key={category}
+            className={`filter-tab${activeCategory === category ? ' active' : ''}`}
+            onClick={() => setActiveCategory(category)}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      <div className="project-grid" style={{ marginTop: '2rem' }}>
+        {filteredProjects.map((project) => (
+          <article className="project-card" key={project.title}>
+            <div>
+              <span className="project-card-tag">{project.tag}</span>
+              <h3 className="card-title" style={{ marginTop: '0.75rem' }}>{project.title}</h3>
+              <p className="card-desc">{project.desc}</p>
+            </div>
+            <a href={project.link} target="_blank" rel="noreferrer" className="card-link">
+              <span>VIEW PROJECT</span>
+              <span className="arrow-box" aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))}
+      </div>
     </div>
   )
 }
