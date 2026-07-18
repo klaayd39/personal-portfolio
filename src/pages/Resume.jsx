@@ -75,7 +75,7 @@ export default function Resume() {
               <div className="rv-job">
                 <div className="rv-job-header">
                   <span className="rv-job-title">Software Automation &amp; Systems Developer</span>
-                  <span className="rv-job-period">2022 – Present</span>
+                  <span className="rv-job-period">2025 – Present</span>
                 </div>
                 <span className="rv-job-company">Bombo Radyo Malaybalay</span>
                 <p className="rv-job-tech">
