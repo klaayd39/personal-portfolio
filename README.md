@@ -1,74 +1,97 @@
-# ⚡ Klyde Joseph | Professional Automation Portfolio
+# ⚡ Klyde Joseph Yabo | Professional Portfolio & Automation Hub
 
-A high-end, responsive portfolio built with **React**, **Vite**, and plain CSS — designed to deploy on **Vercel**. Ported from an original Streamlit app, keeping the glassmorphism look, gradient typography, and Lottie animations, rebuilt as a static SPA.
+A modern, high-end, responsive portfolio built with **React**, **Vite**, **Supabase**, and plain **CSS** — optimized for lightning-fast speeds and hosted on **Vercel**. 
 
-## 🚀 Features
-- **Client-side routing:** Home, Projects, Resume, and Contact pages via `react-router-dom`.
-- **Glassmorphism UI:** Frosted-glass cards over a dark navy gradient backdrop.
-- **Lottie animations:** Sidebar and contact-page animations loaded via `lottie-react`.
-- **Project grid:** Category-grouped cards pulling from a simple JS data array.
-- **Contact form:** Client-side validation and success state (front-end only — see note below).
-- **Responsive:** Sidebar collapses into a sticky mobile top nav under 760px.
+This portfolio showcases professional broadcast systems, live-production automation tools, and real-time web applications with an elegant dark navy glassmorphic theme.
+
+---
+
+## 🚀 Key Features
+
+* **🎛️ Interactive Project Filter:** Smoothly filter and transition project cards dynamically by category (*Automation*, *Broadcast Systems*, *Intelligence*) via active tab selectors.
+* **📱 Off-Canvas Mobile Navigation:** Collapses the vertical sidebar into a smooth off-canvas drawer overlay on mobile viewports (<768px), triggered via a hamburger menu.
+* **💾 Supabase Integration:** Connects the **Contact Page** form directly to a Supabase database instance to securely log incoming messages in real-time.
+* **📄 In-Page Print-to-PDF Resume:** Provides a beautifully formatted, print-optimized digital resume page. Prints/saves perfectly to paper or A4 PDF with custom typography styles and layouts.
+* **✨ Glassmorphic Aesthetics:** Sleek dark navy backdrop with frosted glass accents, subtle 3D hover movements on cards, and Lottie animations for micro-interactions.
+
+---
 
 ## 🛠️ Tech Stack
-- **Framework:** React 19 + Vite
-- **Routing:** react-router-dom
-- **Animations:** lottie-react
-- **Styling:** Plain CSS (`src/index.css`), custom properties for the color system
-- **Hosting:** Vercel
+
+* **Framework:** React 19 + Vite
+* **Routing:** React Router DOM (v7)
+* **Backend integration:** Supabase Client SDK (`@supabase/supabase-js`)
+* **Animations:** `lottie-react`
+* **Styling:** Vanilla CSS3 (Fully custom design tokens, responsive typography clamp, and media-print layouts)
+* **Hosting:** Vercel
+
+---
 
 ## 📂 Project Structure
+
 ```text
 ├── public/
-│   ├── ID.png         # Profile picture — REPLACE with your real photo
-│   └── resume.jpg      # Resume image — REPLACE with your real resume
+│   ├── ID.png             # Profile picture
+│   └── resume.jpg         # Legacy resume download file
 ├── src/
 │   ├── components/
-│   │   ├── Sidebar.jsx     # Desktop nav + Lottie + resume download
-│   │   ├── MobileNav.jsx   # Sticky top nav for small screens
-│   │   └── navItems.js     # Shared nav link data
+│   │   ├── Sidebar.jsx    # Responsive sidebar (Desktop sidebar & Mobile drawer)
+│   │   ├── MobileNav.jsx  # Deprecated (Navigation now consolidated in Sidebar)
+│   │   ├── SafeLottie.jsx # Safe wrapper for Lottie integrations
+│   │   └── navItems.js    # Shared navigation configurations
+│   ├── data/
+│   │   └── skills.js      # Shared skills source-of-truth configuration
 │   ├── hooks/
-│   │   └── useLottieUrl.js # Fetches a Lottie JSON from a URL
+│   │   └── useLottieUrl.js # Async Lottie animation loader hook
 │   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── Projects.jsx
-│   │   ├── Resume.jsx
-│   │   └── Contact.jsx
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
-├── vercel.json          # SPA rewrite rule
+│   │   ├── Home.jsx       # Digital Architect Hero & Profile Card
+│   │   ├── Projects.jsx   # Interactive filtering project portfolio
+│   │   ├── Resume.jsx     # Modern digital resume page with PDF export support
+│   │   └── Contact.jsx    # Supabase-connected direct messaging form
+│   ├── supabaseClient.js  # Supabase initialization client configuration
+│   ├── App.jsx            # Main app shell & routing configuration
+│   ├── index.css          # Core CSS stylesheet containing full responsive layout rules
+│   └── main.jsx
+├── vercel.json            # Vercel catch-all rewrites for React Router SPA
+├── .env.example           # Supabase environment variables template
 └── package.json
 ```
 
-## 🖼️ Before you deploy
-1. Replace `public/ID.png` and `public/resume.jpg` with your real photo and resume image (current files are placeholders).
-2. Edit project entries in `src/pages/Projects.jsx` if anything's changed.
-3. Update the email / location in `src/pages/Contact.jsx`.
+---
 
-## 📨 About the contact form
-Like the original Streamlit version, the form is **front-end only** — it validates fields and shows a success message, but doesn't actually send an email anywhere. To make it real, wire `handleSubmit` in `src/pages/Contact.jsx` to a service such as:
-- [Formspree](https://formspree.io/)
-- [Resend](https://resend.com/) (via a small Vercel serverless function)
-- [EmailJS](https://www.emailjs.com/)
+## ⚙️ Configuration & Setup
 
-## 💻 Local development
+### 1. Local Development
+Clone this repository, install dependencies, and start the Vite dev server:
 ```bash
 npm install
 npm run dev
 ```
 
-## 🌐 Deploying to Vercel
+### 2. Connect Supabase Database
+1. Go to your **[Supabase Dashboard](https://supabase.com)** and create a new project.
+2. In the **SQL Editor**, run this query to create the table structure:
+   ```sql
+   create table contact_messages (
+     id bigint generated by default as identity primary key,
+     name text not null,
+     email text not null,
+     message text not null,
+     created_at timestamp with time zone default timezone('utc'::text, now()) not null
+   );
+   ```
+3. Enable **insert RLS policy permissions** for `anon` users on the `contact_messages` table to allow form submissions from the web client.
+4. Copy your **Project URL** and **API anon key** from Settings -> API.
+5. Create a `.env` file in the root folder of your project and add them:
+   ```env
+   VITE_SUPABASE_URL=https://your-project-id.supabase.co
+   VITE_SUPABASE_ANON_KEY=your-anon-public-key
+   ```
 
-**Option A — Vercel dashboard:**
-1. Push this folder to a GitHub repo.
-2. Go to [vercel.com/new](https://vercel.com/new) and import the repo.
-3. Vercel auto-detects Vite — no config needed. Click **Deploy**.
+---
 
-**Option B — Vercel CLI:**
-```bash
-npm i -g vercel
-vercel
-```
+## 🌐 Live Deployment (Vercel)
 
-The included `vercel.json` adds a catch-all rewrite so client-side routes like `/projects` and `/contact` work on refresh and direct links.
+1. Connect your GitHub repository to Vercel.
+2. Under the project settings, configure the **Environment Variables** (`VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`) with your production Supabase keys.
+3. Click **Deploy**. Vercel will build and host your portfolio live, automatically updating on every git push.
