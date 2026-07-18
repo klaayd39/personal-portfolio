@@ -9,8 +9,21 @@ const LOTTIE_NAV_URL = 'https://assets5.lottiefiles.com/packages/lf20_fcfjwiyb.j
 export default function Sidebar() {
   const navAnimation = useLottieUrl(LOTTIE_NAV_URL)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   function handleDownloadResume() {
     if (location.pathname === '/resume') {
@@ -70,6 +83,18 @@ export default function Sidebar() {
           📥 Download Resume
         </button>
 
+        <div className="sidebar-socials">
+          <a href="mailto:klydejosephy@gmail.com" className="sidebar-social-link" title="Email">
+            📧
+          </a>
+          <a href="https://github.com/klaayd39" target="_blank" rel="noreferrer" className="sidebar-social-link" title="GitHub">
+            💻
+          </a>
+          <a href="https://www.linkedin.com/in/klyde-joseph-yabo-a38286373/" target="_blank" rel="noreferrer" className="sidebar-social-link" title="LinkedIn">
+            🔗
+          </a>
+        </div>
+
         <p className="sidebar-footer-note">© {new Date().getFullYear()} Klyde Joseph Yabo</p>
       </div>
     </>
@@ -78,12 +103,12 @@ export default function Sidebar() {
   return (
     <>
       {/* Desktop / Tablet Sidebar */}
-      <aside className="sidebar" aria-label="Main navigation">
+      <aside className={`sidebar${isScrolled ? ' scrolled' : ''}`} aria-label="Main navigation">
         <SidebarContent onLinkClick={undefined} onDownload={handleDownloadResume} />
       </aside>
 
       {/* Mobile Hamburger Bar */}
-      <div className="mobile-topbar" role="banner">
+      <div className={`mobile-topbar${isScrolled ? ' scrolled' : ''}`} role="banner">
         <span className="brand">⚡ Klyde Joseph</span>
         <button
           className="hamburger-btn"

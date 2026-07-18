@@ -4,11 +4,11 @@ function handlePrint() {
 
 export default function Resume() {
   return (
-    <div className="resume-page">
+    <div className="resume-page page-wrap">
 
       {/* ── Download button ── */}
       <div className="resume-actions">
-        <button className="resume-dl-btn" onClick={handlePrint}>
+        <button className="btn-primary" onClick={handlePrint}>
           📥 Download as PDF
         </button>
       </div>
@@ -16,7 +16,7 @@ export default function Resume() {
       {/* ══════════════════════════════════
           RESUME CARD
       ══════════════════════════════════ */}
-      <div className="resume-card">
+      <div className="resume-card glass">
 
         {/* ── Header ── */}
         <header className="rv-header">

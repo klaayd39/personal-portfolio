@@ -1,14 +1,26 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Sidebar from './components/Sidebar'
 import MobileNav from './components/MobileNav'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Resume from './pages/Resume'
 import Contact from './pages/Contact'
+import Footer from './components/Footer'
+
+// ScrollToTop Utility
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
 
 export default function App() {
   return (
     <div className="app-shell">
+      <ScrollToTop />
       <Sidebar />
       <MobileNav />
 
@@ -21,9 +33,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
 
-          <footer className="site-footer">
-            © {new Date().getFullYear()} — Klyde Joseph Yabo
-          </footer>
+          <Footer />
         </div>
       </main>
     </div>
