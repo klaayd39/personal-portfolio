@@ -78,7 +78,7 @@ export default function Resume() {
                   <span className="rv-job-title">Software Automation &amp; Systems Developer</span>
                   <span className="rv-job-period">2022 – Present</span>
                 </div>
-                <span className="rv-job-company">Freelance &amp; Independent Projects</span>
+                <span className="rv-job-company">Bombo Radyo Malaybalay</span>
                 <p className="rv-job-tech">
                   <strong>Technologies:</strong> Python, JavaScript, React, REST APIs, Playwright, WebSockets, OSC, Git, Linux
                 </p>
@@ -107,82 +107,6 @@ export default function Resume() {
                   <li>Configured network routing and peripheral devices, improving workspace productivity for small offices.</li>
                 </ul>
               </div>
-            </section>
-
-            {/* Projects – with full clickable URLs and Tech Stacks */}
-            <section className="rv-section">
-              <h2 className="rv-section-title">
-                <span className="rv-section-icon">🚀</span> Key Projects
-              </h2>
-
-              {[
-                {
-                  name: 'X32 Remote Toggle',
-                  tag: 'Automation',
-                  url: 'https://github.com/klaayd39/x32-channel-remote-toggle',
-                  tech: 'Python • OSC • Behringer X32 API',
-                  desc: 'OSC control system for Behringer X32 mixers with sub-50ms real-time state synchronization.',
-                },
-                {
-                  name: 'Media Automator',
-                  tag: 'Automation',
-                  url: 'https://github.com/klaayd39/obs-media-automator',
-                  tech: 'Python • OBS WebSocket API • Batch Scripting',
-                  desc: 'Python-driven workflow engine for instant broadcast asset deployment and OBS source management.',
-                },
-                {
-                  name: 'OBS Scene Autosort',
-                  tag: 'Automation',
-                  url: 'https://github.com/klaayd39/obs-scene-autosort',
-                  tech: 'Python • OBS WebSocket API',
-                  desc: 'Dynamic scene indexing tool that reduced production setup time by ~70% for complex live shows.',
-                },
-                {
-                  name: 'Drama Report Gen',
-                  tag: 'Automation',
-                  url: 'https://github.com/klaayd39/Automatic-Drama-Report-Document-Generation',
-                  tech: 'Python • docx • Streamlit',
-                  desc: 'Automated documentation engine that cut manual broadcast log data entry by ~90%.',
-                },
-                {
-                  name: 'Weather Overlay',
-                  tag: 'Broadcast',
-                  url: 'https://github.com/klaayd39/obs-bukidnon-weather-overlay',
-                  tech: 'JavaScript • HTML/CSS • SVG • OpenWeather API',
-                  desc: 'Vector-based weather visualization with real-time REST API integration for live stream overlays.',
-                },
-                {
-                  name: 'Nautel AUI Monitor',
-                  tag: 'Broadcast',
-                  url: 'https://github.com/klaayd39/nautel-aui-monitor',
-                  tech: 'Python • Playwright • Discord Webhooks',
-                  desc: 'Real-time transmitter health monitoring dashboard with custom telemetry alerts.',
-                },
-                {
-                  name: 'Bombo News Intel',
-                  tag: 'Intelligence',
-                  url: 'https://bombo-radyo.vercel.app',
-                  tech: 'React • Python • Gemini API • REST API • TailwindCSS',
-                  desc: 'AI-powered news monitoring dashboard aggregating 50+ live intelligence feeds.',
-                },
-              ].map((p) => (
-                <div className="rv-project" key={p.name}>
-                  <div className="rv-project-header">
-                    <span className="rv-project-name">{p.name}</span>
-                    <span className="rv-project-tag">{p.tag}</span>
-                  </div>
-                  <p className="rv-project-tech">{p.tech}</p>
-                  <p className="rv-project-desc">{p.desc}</p>
-                  <a
-                    className="rv-project-link"
-                    href={p.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    🔗 {p.url}
-                  </a>
-                </div>
-              ))}
             </section>
 
           </div>{/* end rv-left */}
