@@ -22,7 +22,7 @@ export default function App() {
           </Routes>
 
           <footer className="site-footer">
-            © {new Date().getFullYear()} — Designed with ❤️ by Klyde Joseph Yabo
+            © {new Date().getFullYear()} — Klyde Joseph Yabo
           </footer>
         </div>
       </main>
