@@ -722,6 +722,16 @@ textarea:focus-visible,
   font-size: 0.85rem;
 }
 
+.rv-contact-block a {
+  color: var(--text-faint);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.rv-contact-block a:hover {
+  color: var(--secondary);
+}
+
 .rv-divider {
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -1446,6 +1456,12 @@ textarea:focus-visible,
     margin: 8pt 0 !important;
   }
 
+  /* ── Contact links ── */
+  .rv-contact-block a {
+    color: #374151 !important;
+    text-decoration: none !important;
+  }
+
   /* ── Two-column body ── */
   .rv-body {
     grid-template-columns: 1fr 190px !important;
@@ -1460,7 +1476,7 @@ textarea:focus-visible,
   .rv-section-title {
     color: #1d4ed8 !important;
     font-size: 7.5pt !important;
-    letter-spacing: 1.5px !important;
+    letter-spacing: 0.5px !important;
     border-bottom: 0.5pt solid #d1d5db;
     padding-bottom: 2pt !important;
     margin-bottom: 5pt !important;
