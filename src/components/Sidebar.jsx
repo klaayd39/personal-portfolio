@@ -1,55 +1,13 @@
 import { useState, useEffect } from 'react'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import Lottie from './SafeLottie'
 import useLottieUrl from '../hooks/useLottieUrl'
 import { NAV_ITEMS } from './navItems'
 
 const LOTTIE_NAV_URL = 'https://assets5.lottiefiles.com/packages/lf20_fcfjwiyb.json'
 
-export default function Sidebar() {
-  const navAnimation = useLottieUrl(LOTTIE_NAV_URL)
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
-  const location = useLocation()
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true)
-      } else {
-        setIsScrolled(false)
-      }
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  function handleDownloadResume() {
-    if (location.pathname === '/resume') {
-      window.print()
-    } else {
-      navigate('/resume')
-      setTimeout(() => window.print(), 400)
-    }
-  }
-
-  // Close drawer when route changes
-  useEffect(() => {
-    setDrawerOpen(false)
-  }, [location])
-
-  // Prevent body scroll when drawer is open
-  useEffect(() => {
-    if (drawerOpen) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-    return () => { document.body.style.overflow = '' }
-  }, [drawerOpen])
-
-  const SidebarContent = ({ onLinkClick, onDownload }) => (
+function SidebarContent({ navAnimation, onLinkClick }) {
+  return (
     <>
       <div className="sidebar-lottie">
         {navAnimation && (
@@ -76,12 +34,14 @@ export default function Sidebar() {
       <div className="sidebar-bottom">
         <hr className="sidebar-divider" />
 
-        <button
+        <a
+          href="/Klyde_Joseph_Yabo_Resume.pdf"
+          download="Klyde_Joseph_Yabo_Resume.pdf"
           className="download-btn"
-          onClick={onDownload}
+          onClick={onLinkClick}
         >
           📥 Download Resume
-        </button>
+        </a>
 
         <div className="sidebar-socials">
           <a href="mailto:klydejosephy@gmail.com" className="sidebar-social-link" title="Email">
@@ -99,12 +59,48 @@ export default function Sidebar() {
       </div>
     </>
   )
+}
+
+export default function Sidebar() {
+  const navAnimation = useLottieUrl(LOTTIE_NAV_URL)
+  const [drawerOpen, setDrawerOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const location = useLocation()
+  const [prevPath, setPrevPath] = useState(location.pathname)
+
+  // Adjust state during render when route changes
+  if (prevPath !== location.pathname) {
+    setPrevPath(location.pathname)
+    setDrawerOpen(false)
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Prevent body scroll when drawer is open
+  useEffect(() => {
+    if (drawerOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => { document.body.style.overflow = '' }
+  }, [drawerOpen])
 
   return (
     <>
       {/* Desktop / Tablet Sidebar */}
       <aside className={`sidebar${isScrolled ? ' scrolled' : ''}`} aria-label="Main navigation">
-        <SidebarContent onLinkClick={undefined} onDownload={handleDownloadResume} />
+        <SidebarContent navAnimation={navAnimation} onLinkClick={undefined} />
       </aside>
 
       {/* Mobile Hamburger Bar */}
@@ -142,7 +138,10 @@ export default function Sidebar() {
         >
           ✕
         </button>
-        <SidebarContent onLinkClick={() => setDrawerOpen(false)} onDownload={() => { setDrawerOpen(false); handleDownloadResume() }} />
+        <SidebarContent
+          navAnimation={navAnimation}
+          onLinkClick={() => setDrawerOpen(false)}
+        />
       </aside>
     </>
   )

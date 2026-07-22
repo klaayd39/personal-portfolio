@@ -1,12 +1,11 @@
 import { useState, useRef } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { SKILLS } from '../data/skills'
 import ScrollReveal from '../components/ScrollReveal'
 
 export default function Home() {
   const cardRef = useRef(null)
   const [transformStyle, setTransformStyle] = useState('')
-  const navigate = useNavigate()
 
   function handleMouseMove(e) {
     if (!cardRef.current) return

@@ -242,6 +242,7 @@ textarea:focus-visible {
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .download-btn:hover {
@@ -1322,6 +1323,212 @@ textarea:focus-visible {
   }
   .modal-hero {
     height: 200px;
+  }
+}
+
+/* ─────────────────────────────────────────
+   RESUME DOCUMENT THEME (MATCHES DOCX / PDF)
+   ───────────────────────────────────────── */
+.resume-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.resume-card.doc-theme {
+  background: #ffffff;
+  color: #222222;
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  font-family: 'Calibri', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.rv-header {
+  margin-bottom: 20px;
+}
+
+.rv-name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #222222;
+  margin: 0 0 4px;
+  letter-spacing: 0.02em;
+}
+
+.rv-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #8B4513;
+  margin: 0 0 12px;
+}
+
+.rv-contact-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #555555;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #8B4513;
+}
+
+.rv-contact-bar .sep {
+  color: #888888;
+}
+
+.rv-contact-bar a {
+  color: #8B4513;
+  text-decoration: underline;
+}
+
+.rv-body {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.rv-section {
+  margin-bottom: 24px;
+}
+
+.rv-section-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #8B4513;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1.5px solid #8B4513;
+  padding-bottom: 4px;
+  margin-bottom: 12px;
+}
+
+.rv-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #222222;
+  margin: 0;
+}
+
+.rv-text-bold {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #222222;
+  margin: 0;
+}
+
+.rv-edu-school {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #222222;
+  margin: 0 0 2px;
+}
+
+.rv-edu-degree {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #555555;
+  margin: 0;
+}
+
+.rv-job {
+  margin-bottom: 20px;
+}
+
+.rv-job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 2px;
+}
+
+.rv-job-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #222222;
+}
+
+.rv-job-period {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #555555;
+}
+
+.rv-job-company {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #8B4513;
+  margin: 0 0 4px;
+}
+
+.rv-job-tech {
+  font-size: 0.85rem;
+  color: #555555;
+  margin: 0 0 8px;
+}
+
+.rv-job-tech strong {
+  color: #555555;
+}
+
+.rv-job-list {
+  padding-left: 18px;
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #222222;
+}
+
+.rv-job-list li {
+  margin-bottom: 6px;
+}
+
+.rv-skill-group {
+  margin-bottom: 12px;
+}
+
+.rv-skill-group-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #222222;
+  margin: 0 0 2px;
+}
+
+.rv-skill-group-items {
+  font-size: 0.85rem;
+  color: #555555;
+  margin: 0;
+}
+
+.rv-spec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rv-spec-list li {
+  font-size: 0.88rem;
+  color: #222222;
+  position: relative;
+  padding-left: 18px;
+}
+
+.rv-spec-list li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: #8B4513;
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+  .rv-body {
+    grid-template-columns: 1fr;
   }
 }
 
