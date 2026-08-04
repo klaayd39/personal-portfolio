@@ -28,17 +28,12 @@ export default function Resume() {
         {/* ── Header ── */}
         <header className="rv-header">
           <h1 className="rv-name">KLYDE JOSEPH YABO</h1>
-          <p className="rv-title">
-            Software Automation Engineer &nbsp;|&nbsp; Python &nbsp;|&nbsp; JavaScript &nbsp;|&nbsp; Broadcast Automation
-          </p>
           <div className="rv-contact-bar">
             <span>klydejosephy@gmail.com</span>
             <span className="sep">|</span>
             <span>+63 945 592 7782</span>
             <span className="sep">|</span>
             <a href="https://github.com/klaayd39" target="_blank" rel="noreferrer">github.com/klaayd39</a>
-            <span className="sep">|</span>
-            <a href="https://www.linkedin.com/in/klyde-joseph-yabo-a38286373/" target="_blank" rel="noreferrer">linkedin.com/in/klyde-joseph-yabo</a>
             <span className="sep">|</span>
             <span>Malaybalay City, Philippines</span>
           </div>
@@ -105,8 +100,8 @@ export default function Resume() {
                   <strong>Technologies:</strong> Hardware Diagnostics, Network Configuration, Technical Documentation, Video Editing
                 </p>
                 <ul className="rv-job-list">
-                  <li>Performed diagnostic troubleshooting, component upgrades, and repair services for 30+ PCs and office printers.</li>
-                  <li>Installed operating systems, software packages, and system drivers, servicing 50+ local clients.</li>
+                  <li>Performed diagnostic troubleshooting, component upgrades, and repair services.</li>
+                  <li>Installed operating systems, software packages, and system drivers.</li>
                   <li>Configured network routing and peripheral devices, improving workspace productivity for small offices.</li>
                 </ul>
               </div>
@@ -136,7 +131,7 @@ export default function Resume() {
                 },
                 {
                   group: 'Tools & Platforms',
-                  items: ['Git', 'GitHub', 'VS Code', 'OBS Studio', 'Linux'],
+                  items: ['Git', 'GitHub', 'VS Code', 'OBS Studio'],
                 },
                 {
                   group: 'IT & Infrastructure',
