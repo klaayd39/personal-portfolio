@@ -76,7 +76,7 @@ export default function Resume() {
               <div className="rv-job">
                 <div className="rv-job-header">
                   <span className="rv-job-title">Software Automation &amp; Systems Developer</span>
-                  <span className="rv-job-period">2022 – Present</span>
+                  <span className="rv-job-period">2025 – Present</span>
                 </div>
                 <p className="rv-job-company">Bombo Radyo Malaybalay</p>
                 <p className="rv-job-tech">
@@ -88,7 +88,7 @@ export default function Resume() {
                   <li>Designed <strong>Weather Overlay</strong>, a vector-based weather visualization engine with real-time REST API integration, deployed across live broadcast streams reaching 100K+ viewers.</li>
                   <li>Programmed <strong>X32 Remote Toggle</strong> using OSC protocols for Behringer X32 mixers, achieving sub-50ms state synchronization and eliminating manual hardware switching.</li>
                   <li>Developed OBS automation tools (<strong>Media Automator</strong> &amp; <strong>OBS Scene Autosort</strong>) that reduced repetitive production setup time by approximately 70% and improved workflow consistency during live broadcasts.</li>
-                  <li>Created <strong>Drama Report Gen</strong>, an automated document engine that generates broadcast logs and performance reports, cutting manual data entry by approximately 90%.</li>
+                  <li>Developed a <strong>Drama Report Generator</strong> using Raduga in VirtualBox, automating broadcast log and performance report generation and reducing manual data entry by approximately 90%, improving reporting efficiency and accuracy.</li>
                 </ul>
               </div>
 
@@ -164,7 +164,7 @@ export default function Resume() {
             <section className="rv-section">
               <h2 className="rv-section-title">ACHIEVEMENTS</h2>
               <p className="rv-text-bold">
-                Athlete of the Year 2024 – Bukidnon State University
+                College of Technologies Athlete of the Year 2024 – Bukidnon State University
               </p>
             </section>
 
