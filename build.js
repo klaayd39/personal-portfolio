@@ -158,7 +158,7 @@ const doc = new Document({
                                         }),
 
                                         sectionTitle("Experience"),
-                                        jobHeader("Software Automation & Systems Developer", "2025 – Present"),
+                                        jobHeader("Software Automation Developer", "2025 – Present"),
                                         companyLine("Bombo Radyo Malaybalay"),
                                         techLine("Python, JavaScript, React, REST APIs, Playwright, WebSockets, OSC, Git, Linux"),
                                         bullet("Built Bombo News Intel, an AI-powered news monitoring dashboard that aggregates 50+ live intelligence feeds, reducing manual news tracking time by approximately 80%."),
@@ -184,7 +184,7 @@ const doc = new Document({
                                     children: [
                                         sectionTitle("Skills"),
                                         ...skillGroup("Programming", ["Python", "JavaScript", "JSON", "REST API"]),
-                                        ...skillGroup("Frontend", ["React", "HTML", "CSS", "Vite"]),
+                                        ...skillGroup("Frontend", ["React", "HTML", "CSS", "Vite", "Tailwind CSS"]),
                                         ...skillGroup("Automation & Testing", ["Playwright", "WebSockets", "OSC Protocol", "Unit Testing", "API Integration"]),
                                         ...skillGroup("Tools & Platforms", ["Git", "GitHub", "VS Code", "OBS Studio"]),
                                         ...skillGroup("IT & Infrastructure", ["IT Support", "Network Configuration", "Hardware Troubleshooting", "Technical Documentation"]),

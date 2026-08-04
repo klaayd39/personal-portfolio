@@ -75,7 +75,7 @@ export default function Resume() {
 
               <div className="rv-job">
                 <div className="rv-job-header">
-                  <span className="rv-job-title">Software Automation &amp; Systems Developer</span>
+                  <span className="rv-job-title">Software Automation Developer</span>
                   <span className="rv-job-period">2025 – Present</span>
                 </div>
                 <p className="rv-job-company">Bombo Radyo Malaybalay</p>
@@ -125,7 +125,7 @@ export default function Resume() {
                 },
                 {
                   group: 'Frontend',
-                  items: ['React', 'HTML', 'CSS', 'Vite'],
+                  items: ['React', 'HTML', 'CSS', 'Vite', 'Tailwind CSS'],
                 },
                 {
                   group: 'Automation & Testing',
