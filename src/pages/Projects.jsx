@@ -19,7 +19,8 @@ const PROJECTS = [
     ],
     tech: ['Python', 'JavaScript', 'OSC Protocol', 'WebSockets', 'UDP Network'],
     challenges: 'Ensuring network reliability over Wi-Fi/UDP packet drop scenarios. Mitigated by implementing a heartbeat check and auto-recovery sync state loops.',
-    liveUrl: ''
+    liveUrl: '',
+    image: '/projects/x32.png'
   },
   {
     title: 'Media Automator',
@@ -37,7 +38,8 @@ const PROJECTS = [
     ],
     tech: ['Python', 'OBS WebSockets', 'Watchdog', 'JSON APIs', 'Git'],
     challenges: 'Handling concurrent file writes without triggering locking errors. Solved by integrating a debounce delay buffer before launching OBS import workflows.',
-    liveUrl: ''
+    liveUrl: '',
+    image: '/projects/media.png'
   },
   {
     title: 'OBS Scene Autosort',
@@ -55,7 +57,8 @@ const PROJECTS = [
     ],
     tech: ['Python', 'OBS WebSockets', 'GUI Automation', 'Vite', 'React'],
     challenges: 'Syncing UI states when the user modifies scene names inside the native OBS GUI. Addressed by listening to OBS event streams and updating local indexes immediately.',
-    liveUrl: ''
+    liveUrl: '',
+    image: '/projects/obs.png'
   },
   {
     title: 'Drama Report Gen',
@@ -73,7 +76,8 @@ const PROJECTS = [
     ],
     tech: ['Python', 'XLSX/DOCX Engine', 'JSON Schemas', 'Supabase'],
     challenges: 'Aligning dynamic tables perfectly across multi-page templates. Resolved by standardizing style XML blocks inside the generation script.',
-    liveUrl: ''
+    liveUrl: '',
+    image: '/projects/drama.png'
   },
   {
     title: 'Weather Overlay',
@@ -91,7 +95,8 @@ const PROJECTS = [
     ],
     tech: ['React', 'Vite', 'HTML5/CSS3', 'PAGASA API', 'Responsive Design'],
     challenges: 'High memory usage inside OBS browser engines. Solved by strictly optimizing DOM rendering cycles and using lightweight CSS transitions over heavyJS libraries.',
-    liveUrl: ''
+    liveUrl: '',
+    image: '/projects/weather.png'
   },
   {
     title: 'Nautel AUI Monitor',
@@ -109,7 +114,8 @@ const PROJECTS = [
     ],
     tech: ['JavaScript', 'HTML5', 'CSS3', 'Node.js', 'REST APIs', 'Supabase'],
     challenges: 'Interfacing with older XML-based APIs securely. Solved by writing a clean backend parser node that translates legacy XML responses into JSON.',
-    liveUrl: ''
+    liveUrl: '',
+    image: '/projects/nautel.png'
   },
   {
     title: 'Bombo News Intel',
@@ -127,7 +133,8 @@ const PROJECTS = [
     ],
     tech: ['React', 'Supabase', 'Node.js', 'Playwright', 'WebSockets', 'TailwindCSS'],
     challenges: 'Maintaining speed while database sizes grow quickly. Mitigated by indexing text columns, creating cron cleanup routines, and using efficient pagination.',
-    liveUrl: 'https://bombo-radyo.vercel.app'
+    liveUrl: 'https://bombo-radyo.vercel.app',
+    image: '/projects/bombo.png'
   }
 ]
 
@@ -198,9 +205,13 @@ export default function Projects() {
             >
               <article className="project-card glass">
                 <div className="project-card-image-wrap">
-                  <div className="modal-hero-placeholder">
-                    <span className="placeholder-icon">🚀</span>
-                  </div>
+                  {project.image ? (
+                    <img src={project.image} alt={project.title} className="project-card-image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  ) : (
+                    <div className="modal-hero-placeholder">
+                      <span className="placeholder-icon">🚀</span>
+                    </div>
+                  )}
                 </div>
                 <div>
                   <span className="project-card-tag">{project.tag}</span>
