@@ -1,4 +1,4 @@
-# ⚡ Klyde Joseph Yabo | Professional Portfolio & Automation Hub
+# ⚡ Klyde Joseph Yabo
 
 A modern, high-end, responsive portfolio built with **React**, **Vite**, **Supabase**, and plain **CSS** — optimized for lightning-fast speeds and hosted on **Vercel**. 
 
@@ -23,6 +23,7 @@ This portfolio showcases professional broadcast systems, live-production automat
 * **Backend integration:** Supabase Client SDK (`@supabase/supabase-js`)
 * **Animations:** `lottie-react`
 * **Styling:** Vanilla CSS3 (Fully custom design tokens, responsive typography clamp, and media-print layouts)
+* **Resume Generation:** Puppeteer (PDF) & docx (Word) via Node.js
 * **Hosting:** Vercel
 
 ---
@@ -31,8 +32,11 @@ This portfolio showcases professional broadcast systems, live-production automat
 
 ```text
 ├── public/
-│   ├── ID.png             # Profile picture
-│   └── resume.jpg         # Legacy resume download file
+│   ├── ID.png                         # Profile picture
+│   ├── Klyde_Joseph_Yabo_Resume.docx  # Auto-generated Word resume
+│   ├── Klyde_Joseph_Yabo_Resume.pdf   # Auto-generated PDF resume
+│   ├── projects/                      # High-quality hero images for projects
+│   └── resume.jpg                     # Legacy resume download file
 ├── src/
 │   ├── components/
 │   │   ├── Sidebar.jsx    # Responsive sidebar (Desktop sidebar & Mobile drawer)
@@ -52,6 +56,7 @@ This portfolio showcases professional broadcast systems, live-production automat
 │   ├── App.jsx            # Main app shell & routing configuration
 │   ├── index.css          # Core CSS stylesheet containing full responsive layout rules
 │   └── main.jsx
+├── build.js               # Script to auto-generate PDF and DOCX resumes
 ├── vercel.json            # Vercel catch-all rewrites for React Router SPA
 ├── .env.example           # Supabase environment variables template
 └── package.json
