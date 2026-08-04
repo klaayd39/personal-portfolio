@@ -35,6 +35,8 @@ export default function Resume() {
             <span className="sep">|</span>
             <a href="https://github.com/klaayd39" target="_blank" rel="noreferrer">github.com/klaayd39</a>
             <span className="sep">|</span>
+            <a href="https://yabopersonalportfolio.vercel.app/" target="_blank" rel="noreferrer">yabopersonalportfolio.vercel.app</a>
+            <span className="sep">|</span>
             <span>Malaybalay City, Philippines</span>
           </div>
         </header>
