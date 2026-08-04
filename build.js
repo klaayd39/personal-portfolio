@@ -97,15 +97,7 @@ const doc = new Document({
                         new TextRun({ text: "KLYDE JOSEPH YABO", bold: true, size: 40, font: FONT, color: DARK }),
                     ],
                 }),
-                new Paragraph({
-                    spacing: { after: 140 },
-                    children: [
-                        new TextRun({
-                            text: "Software Automation Engineer  |  Python  |  JavaScript  |  Broadcast Automation",
-                            size: 21, font: FONT, color: ACCENT, bold: true,
-                        }),
-                    ],
-                }),
+
 
                 // ── Contact line ──
                 new Paragraph({
@@ -119,8 +111,8 @@ const doc = new Document({
                         }),
                         new TextRun({ text: "   |   ", size: 18, font: FONT, color: GRAY }),
                         new ExternalHyperlink({
-                            link: "https://www.linkedin.com/in/klyde-joseph-yabo-a38286373/",
-                            children: [new TextRun({ text: "linkedin.com/in/klyde-joseph-yabo", size: 18, font: FONT, color: ACCENT, underline: {} })],
+                            link: "https://yabopersonalportfolio.vercel.app/",
+                            children: [new TextRun({ text: "yabopersonalportfolio.vercel.app", size: 18, font: FONT, color: ACCENT, underline: {} })],
                         }),
                         new TextRun({ text: "   |   Malaybalay City, Philippines", size: 18, font: FONT, color: GRAY }),
                     ],
@@ -166,7 +158,7 @@ const doc = new Document({
                                         }),
 
                                         sectionTitle("Experience"),
-                                        jobHeader("Software Automation & Systems Developer", "2022 – Present"),
+                                        jobHeader("Software Automation & Systems Developer", "2025 – Present"),
                                         companyLine("Bombo Radyo Malaybalay"),
                                         techLine("Python, JavaScript, React, REST APIs, Playwright, WebSockets, OSC, Git, Linux"),
                                         bullet("Built Bombo News Intel, an AI-powered news monitoring dashboard that aggregates 50+ live intelligence feeds, reducing manual news tracking time by approximately 80%."),
@@ -174,13 +166,13 @@ const doc = new Document({
                                         bullet("Designed Weather Overlay, a vector-based weather visualization engine with real-time REST API integration, deployed across live broadcast streams reaching 100K+ viewers."),
                                         bullet("Programmed X32 Remote Toggle using OSC protocols for Behringer X32 mixers, achieving sub-50ms state synchronization and eliminating manual hardware switching."),
                                         bullet("Developed OBS automation tools (Media Automator & OBS Scene Autosort) that reduced repetitive production setup time by approximately 70% and improved workflow consistency during live broadcasts."),
-                                        bullet("Created Drama Report Gen, an automated document engine that generates broadcast logs and performance reports, cutting manual data entry by approximately 90%."),
+                                        bullet("Developed a Drama Report Generator using Raduga in VirtualBox, automating broadcast log and performance report generation and reducing manual data entry by approximately 90%, improving reporting efficiency and accuracy."),
 
                                         jobHeader("IT Support & Hardware Technician", "Freelance"),
                                         companyLine("General IT Services"),
                                         techLine("Hardware Diagnostics, Network Configuration, Technical Documentation, Video Editing"),
-                                        bullet("Performed diagnostic troubleshooting, component upgrades, and repair services for 30+ PCs and office printers."),
-                                        bullet("Installed operating systems, software packages, and system drivers, servicing 50+ local clients."),
+                                        bullet("Performed diagnostic troubleshooting, component upgrades, and repair services."),
+                                        bullet("Installed operating systems, software packages, and system drivers."),
                                         bullet("Configured network routing and peripheral devices, improving workspace productivity for small offices."),
                                     ],
                                 }),
@@ -194,7 +186,7 @@ const doc = new Document({
                                         ...skillGroup("Programming", ["Python", "JavaScript", "JSON", "REST API"]),
                                         ...skillGroup("Frontend", ["React", "HTML", "CSS", "Vite"]),
                                         ...skillGroup("Automation & Testing", ["Playwright", "WebSockets", "OSC Protocol", "Unit Testing", "API Integration"]),
-                                        ...skillGroup("Tools & Platforms", ["Git", "GitHub", "VS Code", "OBS Studio", "Linux"]),
+                                        ...skillGroup("Tools & Platforms", ["Git", "GitHub", "VS Code", "OBS Studio"]),
                                         ...skillGroup("IT & Infrastructure", ["IT Support", "Network Configuration", "Hardware Troubleshooting", "Technical Documentation"]),
 
                                         sectionTitle("Specializations"),
@@ -208,7 +200,7 @@ const doc = new Document({
                                         sectionTitle("Achievements"),
                                         new Paragraph({
                                             spacing: { after: 100 },
-                                            children: [new TextRun({ text: "Athlete of the Year 2024 – Bukidnon State University", bold: true, size: 20, font: FONT, color: DARK })],
+                                            children: [new TextRun({ text: "College of Technologies Athlete of the Year 2024 – Bukidnon State University", bold: true, size: 20, font: FONT, color: DARK })],
                                         }),
 
                                         sectionTitle("Reference"),
@@ -227,6 +219,6 @@ const doc = new Document({
 });
 
 Packer.toBuffer(doc).then((buf) => {
-    fs.writeFileSync("./Klyde_Joseph_Yabo_Resume.docx", buf);
+    fs.writeFileSync("./public/Klyde_Joseph_Yabo_Resume.docx", buf);
     console.log("done");
 });
