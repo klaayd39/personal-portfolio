@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
 import Lottie from '../components/SafeLottie'
@@ -92,6 +93,9 @@ export default function Contact() {
 
   return (
     <div className="page-wrap">
+      <Helmet>
+        <title>Contact | Klyde Joseph Yabo</title>
+      </Helmet>
       <div className="contact-grid">
         <ScrollReveal direction="right" duration={600}>
           <div>

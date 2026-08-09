@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { SKILLS } from '../data/skills'
@@ -29,6 +30,9 @@ export default function Home() {
 
   return (
     <div className="page-wrap">
+      <Helmet>
+        <title>Klyde Joseph Yabo | Portfolio</title>
+      </Helmet>
       <div className="section-block">
         <div className="hero-grid">
           {/* Left column — hero text */}

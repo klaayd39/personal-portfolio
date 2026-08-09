@@ -29,7 +29,7 @@ export default function ProjectModal({ project, onClose }) {
 
         <div className="modal-hero">
           {project.image ? (
-            <img src={project.image} alt={project.title} className="modal-hero-img" />
+            <img src={project.image} alt={project.title} loading="lazy" className="modal-hero-img" />
           ) : (
             <div className="modal-hero-placeholder">
               <span className="placeholder-icon">🚀</span>

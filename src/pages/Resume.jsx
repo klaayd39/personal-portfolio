@@ -1,6 +1,10 @@
+import { Helmet } from 'react-helmet-async';
 export default function Resume() {
   return (
     <div className="resume-page page-wrap">
+      <Helmet>
+        <title>Resume | Klyde Joseph Yabo</title>
+      </Helmet>
 
       {/* ── Download buttons ── */}
       <div className="resume-actions">
