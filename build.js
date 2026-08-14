@@ -161,7 +161,7 @@ const doc = new Document({
                                         jobHeader("Software Automation Developer", "2025 – Present"),
                                         companyLine("Bombo Radyo Malaybalay"),
                                         techLine("Python, JavaScript, React, REST APIs, Playwright, WebSockets, OSC, Git, Linux"),
-                                        bullet("Built Bombo News Intel, an AI-powered news monitoring dashboard that aggregates 50+ live intelligence feeds, reducing manual news tracking time by approximately 80%."),
+                                        bullet("Built NewsPulse, an AI-powered news monitoring dashboard that aggregates 50+ live intelligence feeds, reducing manual news tracking time by approximately 80%."),
                                         bullet("Developed Nautel AUI Monitor, a real-time transmitter health dashboard with custom telemetry alerts, enabling 24/7 unattended monitoring and reducing equipment downtime."),
                                         bullet("Designed Weather Overlay, a vector-based weather visualization engine with real-time REST API integration, deployed across live broadcast streams reaching 100K+ viewers."),
                                         bullet("Programmed X32 Remote Toggle using OSC protocols for Behringer X32 mixers, achieving sub-50ms state synchronization and eliminating manual hardware switching."),

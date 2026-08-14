@@ -134,11 +134,11 @@ export const PROJECTS = [
     image: '/projects/nautel.png'
   },
   {
-    title: 'Bombo News Intel',
+    title: 'NewsPulse',
     tag: 'Intelligence',
-    link: 'https://bombo-radyo.vercel.app',
+    link: 'https://github.com/klaayd39/news-headline-crawler',
     desc: 'AI-powered news monitoring dashboard that aggregates and synthesizes live intelligence feeds.',
-    longDesc: 'Bombo News Intel is an advanced monitoring board aggregating 50+ live feeds, news portals, and social reports. It processes text feeds via localized filters to build a centralized real-time intelligence board for broadcast journalists.',
+    longDesc: 'NewsPulse is an advanced monitoring board aggregating 50+ live feeds, news portals, and social reports. It processes text feeds via localized filters to build a centralized real-time intelligence board for broadcast journalists.',
     problem: 'Journalists manually scanning dozens of pages miss breaking news, or lose valuable time during coverage.',
     solution: 'Engineered a full-stack platform using React, Supabase, and real-time scrapers that categorize, prioritize, and alert users of breaking items.',
     features: [
