@@ -41,10 +41,6 @@ export default function Footer() {
               🔗 LinkedIn
             </a>
           </div>
-
-          <button onClick={scrollToTop} className="back-to-top-btn" aria-label="Back to top">
-            ▲ Top
-          </button>
         </div>
 
         <div className="footer-copyright">
