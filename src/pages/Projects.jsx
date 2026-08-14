@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import ScrollReveal from '../components/ScrollReveal'
 import ProjectModal from '../components/ProjectModal'
 
@@ -32,30 +32,6 @@ export default function Projects() {
     })
   }
 
-  const handleMouseMove = (e, cardElement) => {
-    if (!cardElement) return
-    const rect = cardElement.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    
-    // For 3D tilt
-    const centerX = rect.width / 2
-    const centerY = rect.height / 2
-    const rotateX = ((y - centerY) / centerY) * -10 // max 10 deg tilt
-    const rotateY = ((x - centerX) / centerX) * 10
-    
-    cardElement.style.setProperty('--mouse-x', `${x}px`)
-    cardElement.style.setProperty('--mouse-y', `${y}px`)
-    cardElement.style.setProperty('--rotate-x', `${rotateX}deg`)
-    cardElement.style.setProperty('--rotate-y', `${rotateY}deg`)
-  }
-
-  const handleMouseLeave = (cardElement) => {
-    if (!cardElement) return
-    cardElement.style.setProperty('--rotate-x', '0deg')
-    cardElement.style.setProperty('--rotate-y', '0deg')
-  }
-
   return (
     <div className="page-wrap">
       <Helmet>
@@ -63,9 +39,9 @@ export default function Projects() {
       </Helmet>
       <div className="projects-header">
         <ScrollReveal direction="down" duration={500}>
-          <h1 className="header-title">Project Portfolio</h1>
+          <h1 className="header-title">Projects</h1>
           <p className="header-subtitle">
-            Specialized automation toolsets, telemetry dashboards, and real-time systems built for high-demand environments.
+            Automation toolsets, telemetry dashboards, and real-time systems built for high-demand environments.
           </p>
         </ScrollReveal>
       </div>
@@ -88,7 +64,7 @@ export default function Projects() {
       {loading ? (
         <div className="project-grid" style={{ marginTop: '2rem' }}>
           {[1, 2, 3, 4, 5, 6].map((idx) => (
-            <div className="card-skeleton glass" key={idx}>
+            <div className="card-skeleton" key={idx}>
               <div className="skeleton-image-wrap shimmer" />
               <div className="skeleton-content">
                 <div className="skeleton-tag shimmer" />
@@ -121,17 +97,15 @@ export default function Projects() {
               key={project.title}
             >
               <article 
-                className="project-card glass"
+                className="project-card"
                 style={{ viewTransitionName: `project-${project.title.replace(/[^a-zA-Z0-9]/g, '-')}` }}
-                onMouseMove={(e) => handleMouseMove(e, e.currentTarget)}
-                onMouseLeave={(e) => handleMouseLeave(e.currentTarget)}
               >
                 <div className="project-card-image-wrap">
                   {project.image ? (
                     <img src={project.image} loading="lazy" alt={project.title} className="project-card-image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   ) : (
                     <div className="modal-hero-placeholder">
-                      <span className="placeholder-icon">🚀</span>
+                      <span className="placeholder-text">{project.title}</span>
                     </div>
                   )}
                 </div>

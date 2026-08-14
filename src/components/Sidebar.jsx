@@ -1,18 +1,13 @@
 import { useState, useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
-import Lottie from './SafeLottie'
-import useLottieUrl from '../hooks/useLottieUrl'
 import { NAV_ITEMS } from './navItems'
 
-const LOTTIE_NAV_URL = 'https://assets5.lottiefiles.com/packages/lf20_fcfjwiyb.json'
-
-function SidebarContent({ navAnimation, onLinkClick }) {
+function SidebarContent({ onLinkClick }) {
   return (
     <>
-      <div className="sidebar-lottie">
-        {navAnimation && (
-          <Lottie animationData={navAnimation} loop autoplay />
-        )}
+      <div className="sidebar-brand">
+        <span className="brand-name">Klyde Joseph</span>
+        <span className="brand-role">Software Engineer</span>
       </div>
 
       <ul className="nav-list">
@@ -24,7 +19,6 @@ function SidebarContent({ navAnimation, onLinkClick }) {
               className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
               onClick={onLinkClick}
             >
-              <span aria-hidden="true">{item.icon}</span>
               <span>{item.label}</span>
             </NavLink>
           </li>
@@ -40,18 +34,18 @@ function SidebarContent({ navAnimation, onLinkClick }) {
           className="download-btn"
           onClick={onLinkClick}
         >
-          📥 Download Resume
+          Download Resume
         </a>
 
         <div className="sidebar-socials">
           <a href="mailto:klydejosephy@gmail.com" className="sidebar-social-link" title="Email">
-            📧
+            Email
           </a>
           <a href="https://github.com/klaayd39" target="_blank" rel="noreferrer" className="sidebar-social-link" title="GitHub">
-            💻
+            GitHub
           </a>
           <a href="https://www.linkedin.com/in/klyde-joseph-yabo-a38286373/" target="_blank" rel="noreferrer" className="sidebar-social-link" title="LinkedIn">
-            🔗
+            LinkedIn
           </a>
         </div>
 
@@ -62,7 +56,6 @@ function SidebarContent({ navAnimation, onLinkClick }) {
 }
 
 export default function Sidebar() {
-  const navAnimation = useLottieUrl(LOTTIE_NAV_URL)
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const location = useLocation()
@@ -100,12 +93,12 @@ export default function Sidebar() {
     <>
       {/* Desktop / Tablet Sidebar */}
       <aside className={`sidebar${isScrolled ? ' scrolled' : ''}`} aria-label="Main navigation">
-        <SidebarContent navAnimation={navAnimation} onLinkClick={undefined} />
+        <SidebarContent onLinkClick={undefined} />
       </aside>
 
       {/* Mobile Hamburger Bar */}
       <div className={`mobile-topbar${isScrolled ? ' scrolled' : ''}`} role="banner">
-        <span className="brand">⚡ Klyde Joseph</span>
+        <span className="brand">Klyde Joseph</span>
         <button
           className="hamburger-btn"
           onClick={() => setDrawerOpen(true)}
@@ -139,7 +132,6 @@ export default function Sidebar() {
           ✕
         </button>
         <SidebarContent
-          navAnimation={navAnimation}
           onLinkClick={() => setDrawerOpen(false)}
         />
       </aside>

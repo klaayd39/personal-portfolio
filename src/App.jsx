@@ -29,7 +29,7 @@ export default function App() {
 
       <main className="main-content">
         <div className="page-wrap">
-          <Suspense fallback={<div className="page-wrap" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh' }}>Loading...</div>}>
+          <Suspense fallback={<div className="page-wrap" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '50vh', opacity: 0.4 }}></div>}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/projects" element={<Projects />} />

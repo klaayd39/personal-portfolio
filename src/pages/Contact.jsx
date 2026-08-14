@@ -1,12 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { useState } from 'react'
 import emailjs from '@emailjs/browser'
-import Lottie from '../components/SafeLottie'
-import useLottieUrl from '../hooks/useLottieUrl'
 import { supabase, isSupabaseConfigured } from '../supabaseClient'
 import ScrollReveal from '../components/ScrollReveal'
-
-const LOTTIE_CONTACT_URL = 'https://assets9.lottiefiles.com/packages/lf20_u25cckyh.json'
 
 const EMAILJS_SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
@@ -14,8 +10,6 @@ const EMAILJS_PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 const isEmailJSConfigured = !!(EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY)
 
 export default function Contact() {
-  const contactAnimation = useLottieUrl(LOTTIE_CONTACT_URL)
-
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [status, setStatus] = useState(null) // null | 'error' | 'success' | 'submitting' | 'missing-env'
   const [sentName, setSentName] = useState('')
@@ -87,7 +81,7 @@ export default function Contact() {
     } catch (err) {
       console.error('Error inserting message:', err)
       setStatus('error')
-      setErrorMessage(err.message || 'Failed to send message via Supabase.')
+      setErrorMessage(err.message || 'Failed to send message.')
     }
   }
 
@@ -99,32 +93,23 @@ export default function Contact() {
       <div className="contact-grid">
         <ScrollReveal direction="right" duration={600}>
           <div>
-            {contactAnimation && (
-              <div className="contact-lottie">
-                <Lottie animationData={contactAnimation} loop autoplay />
-              </div>
-            )}
-
-            <div className="contact-card-modern glass">
+            <div className="contact-card-modern">
               <h2 className="contact-header">Let's Connect</h2>
               <p className="contact-lead">
                 Whether you have a question about <b>automation workflows</b> or want to discuss a{' '}
                 <b>full-stack partnership</b>, my inbox is always open.
               </p>
-              <div className="contact-detail">📍 <span>Malaybalay City, Bukidnon, Philippines</span></div>
-              <div className="contact-detail">📧 <span>klydejosephy@gmail.com</span></div>
+              <div className="contact-detail">Malaybalay City, Bukidnon, Philippines</div>
+              <div className="contact-detail">klydejosephy@gmail.com</div>
 
               <div className="contact-social-grid">
                 <a href="mailto:klydejosephy@gmail.com" className="contact-social-card">
-                  <span className="contact-social-icon">📧</span>
                   <span className="contact-social-label">Email</span>
                 </a>
                 <a href="https://github.com/klaayd39" target="_blank" rel="noreferrer" className="contact-social-card">
-                  <span className="contact-social-icon">💻</span>
                   <span className="contact-social-label">GitHub</span>
                 </a>
                 <a href="https://www.linkedin.com/in/klyde-joseph-yabo-a38286373/" target="_blank" rel="noreferrer" className="contact-social-card">
-                  <span className="contact-social-icon">🔗</span>
                   <span className="contact-social-label">LinkedIn</span>
                 </a>
               </div>
@@ -134,19 +119,19 @@ export default function Contact() {
 
         <ScrollReveal direction="left" duration={600} delay={100}>
           <div>
-            <h3 className="contact-form-title">Send a Direct Message</h3>
+            <h3 className="contact-form-title">Send a Message</h3>
 
             {status === 'error' && (
               <p className="form-error">{errorMessage}</p>
             )}
             {status === 'success' && (
-              <p className="form-success">Successfully sent! Message stored. Talk soon, {sentName}.</p>
+              <p className="form-success">Message sent successfully. Talk soon, {sentName}.</p>
             )}
             {status === 'missing-env' && (
-              <div className="form-success" style={{ background: 'rgba(234, 179, 8, 0.1)', color: '#eab308', borderColor: 'rgba(234, 179, 8, 0.3)' }}>
-                <p style={{ margin: 0, fontWeight: 700 }}>⚠️ Supabase Not Connected (Demo Mode)</p>
+              <div className="form-success" style={{ background: 'rgba(161, 161, 170, 0.1)', color: '#a1a1aa', borderColor: 'rgba(161, 161, 170, 0.3)' }}>
+                <p style={{ margin: 0, fontWeight: 600 }}>Demo Mode</p>
                 <p style={{ margin: '5px 0 0', fontSize: '0.85rem' }}>
-                  Successfully simulated! Create a <code>.env</code> file in your project root with your variables to enable real submissions.
+                  Create a <code>.env</code> file with your Supabase variables to enable real submissions.
                 </p>
               </div>
             )}
@@ -196,7 +181,7 @@ export default function Contact() {
                 className="submit-btn btn-primary" 
                 disabled={status === 'submitting'}
               >
-                {status === 'submitting' ? '⚡ Storing Message...' : '🚀 Deploy Message'}
+                {status === 'submitting' ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
