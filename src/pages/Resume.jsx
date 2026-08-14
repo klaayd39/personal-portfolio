@@ -138,24 +138,20 @@ export default function Resume() {
 
               {[
                 {
-                  group: 'Programming',
-                  items: ['Python', 'JavaScript', 'JSON', 'REST API'],
-                },
-                {
                   group: 'Frontend',
-                  items: ['React', 'HTML', 'CSS', 'Vite', 'Tailwind CSS'],
+                  items: ['React', 'JavaScript', 'HTML5', 'CSS3', 'Vite', 'Responsive Design'],
                 },
                 {
-                  group: 'Automation & Testing',
-                  items: ['Playwright', 'WebSockets', 'OSC Protocol', 'Unit Testing', 'API Integration'],
+                  group: 'Backend & Automation',
+                  items: ['Python', 'Node.js', 'Playwright', 'OSC Protocol', 'WebSockets', 'API Design'],
                 },
                 {
-                  group: 'Tools & Platforms',
-                  items: ['Git', 'GitHub', 'VS Code', 'OBS Studio'],
+                  group: 'Database & Cloud',
+                  items: ['Supabase', 'PostgreSQL', 'REST APIs', 'Firebase App Hosting', 'Git/GitHub'],
                 },
                 {
-                  group: 'IT & Infrastructure',
-                  items: ['IT Support', 'Network Configuration', 'Hardware Troubleshooting', 'Technical Documentation'],
+                  group: 'Broadcast Systems & Tools',
+                  items: ['OBS Studio', 'Nautel Telemetry', 'X32 Control', 'Linux Systems', 'Video Editing'],
                 },
               ].map(({ group, items }) => (
                 <div className="rv-skill-group" key={group}>

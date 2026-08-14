@@ -189,11 +189,10 @@ const doc = new Document({
                                     margins: { left: 260 },
                                     children: [
                                         sectionTitle("Skills"),
-                                        ...skillGroup("Programming", ["Python", "JavaScript", "JSON", "REST API"]),
-                                        ...skillGroup("Frontend", ["React", "HTML", "CSS", "Vite", "Tailwind CSS"]),
-                                        ...skillGroup("Automation & Testing", ["Playwright", "WebSockets", "OSC Protocol", "Unit Testing", "API Integration"]),
-                                        ...skillGroup("Tools & Platforms", ["Git", "GitHub", "VS Code", "OBS Studio"]),
-                                        ...skillGroup("IT & Infrastructure", ["IT Support", "Network Configuration", "Hardware Troubleshooting", "Technical Documentation"]),
+                                        ...skillGroup("Frontend", ["React", "JavaScript", "HTML5", "CSS3", "Vite", "Responsive Design"]),
+                                        ...skillGroup("Backend & Automation", ["Python", "Node.js", "Playwright", "OSC Protocol", "WebSockets", "API Design"]),
+                                        ...skillGroup("Database & Cloud", ["Supabase", "PostgreSQL", "REST APIs", "Firebase App Hosting", "Git/GitHub"]),
+                                        ...skillGroup("Broadcast Systems & Tools", ["OBS Studio", "Nautel Telemetry", "X32 Control", "Linux Systems", "Video Editing"]),
 
                                         sectionTitle("Specializations"),
                                         specLine("Stream & Broadcast Automation"),
