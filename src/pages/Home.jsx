@@ -14,7 +14,6 @@ export default function Home() {
           {/* Left column — hero text */}
           <div className="hero-left">
             <ScrollReveal direction="down" duration={500}>
-              <p className="eyebrow">Software Automation Engineer</p>
               <h1 className="main-title">
                 Klyde Joseph<br />Yabo
               </h1>

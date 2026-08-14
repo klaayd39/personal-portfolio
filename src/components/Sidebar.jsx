@@ -7,7 +7,6 @@ function SidebarContent({ onLinkClick }) {
     <>
       <div className="sidebar-brand">
         <span className="brand-name">Klyde Joseph</span>
-        <span className="brand-role">Software Engineer</span>
       </div>
 
       <ul className="nav-list">
