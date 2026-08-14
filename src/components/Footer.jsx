@@ -19,7 +19,6 @@ export default function Footer() {
         <div className="footer-bottom-grid">
           <div className="footer-info">
             <span className="footer-brand">Klyde Joseph</span>
-            <p className="footer-role">Software Automation Engineer</p>
           </div>
 
           <div className="footer-links">
