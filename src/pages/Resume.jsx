@@ -79,6 +79,17 @@ export default function Resume() {
 
               <div className="rv-job">
                 <div className="rv-job-header">
+                  <span className="rv-job-title">IT Intern – Cash Unit (OJT)</span>
+                  <span className="rv-job-period"></span>
+                </div>
+                <p className="rv-job-company">Department of Education, Malaybalay City</p>
+                <ul className="rv-job-list">
+                  <li>Assisted in computer troubleshooting, data encoding, and loan and voucher processing.</li>
+                </ul>
+              </div>
+
+              <div className="rv-job">
+                <div className="rv-job-header">
                   <span className="rv-job-title">IT/Technician</span>
                   <span className="rv-job-period">2025 – Present</span>
                 </div>

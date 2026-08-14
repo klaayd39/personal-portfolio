@@ -16,7 +16,7 @@ export const PROJECTS = [
     tech: ['React', 'Vite', 'Supabase', 'Vanilla CSS', 'Lottie'],
     challenges: 'Balancing visual quality and performance. Optimized CSS and lazy-loaded components to ensure lightning-fast speeds.',
     liveUrl: 'https://yabopersonalportfolio.vercel.app/',
-    image: ''
+    image: '/projects/portfolio.png'
   },
   {
     title: 'news-headline-crawler',
@@ -34,7 +34,7 @@ export const PROJECTS = [
     tech: ['Python', 'Web Scraping', 'Automation'],
     challenges: 'Handling different HTML structures across news sites. Built robust parsers to handle variations.',
     liveUrl: '',
-    image: ''
+    image: '/projects/crawler.png'
   },
   {
     title: 'Personal Financial Hub',
@@ -129,7 +129,7 @@ export const PROJECTS = [
     tech: ['PowerShell', 'Regex', 'Windows Automation'],
     challenges: 'Handling arbitrary directory structures without failing. Resolved by implementing safe file skipping and strict pattern detection before making changes.',
     liveUrl: '',
-    image: ''
+    image: '/projects/rename.png'
   },
   {
     title: 'OBS Scene Autosort',

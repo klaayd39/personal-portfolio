@@ -158,6 +158,10 @@ const doc = new Document({
                                         }),
 
                                         sectionTitle("Experience"),
+                                        jobHeader("IT Intern – Cash Unit (OJT)", ""),
+                                        companyLine("Department of Education, Malaybalay City"),
+                                        bullet("Assisted in computer troubleshooting, data encoding, and loan and voucher processing."),
+                                        
                                         jobHeader("IT/Technician", "2025 – Present"),
                                         companyLine("Bombo Radyo Malaybalay"),
                                         techLine("Python, JavaScript, React, REST APIs, Playwright, WebSockets, OSC, Git, Linux"),
