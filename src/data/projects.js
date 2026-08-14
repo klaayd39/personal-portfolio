@@ -1,5 +1,25 @@
 export const PROJECTS = [
   {
+    title: 'Personal Financial Hub',
+    tag: 'Web App',
+    link: 'https://github.com/klaayd39/personal-financial-hub',
+    desc: 'A modern, visually stunning dashboard to track income, manage expenses, and monitor savings.',
+    longDesc: 'A modern, visually stunning, and highly interactive web application designed to help you take complete control of your personal finances. Track your income, manage expenses, and monitor your savings all in one beautiful dashboard.',
+    problem: 'Managing personal finances across multiple platforms or spreadsheets can be tedious, leading to poor financial tracking and uncontrolled spending.',
+    solution: 'Engineered a comprehensive financial dashboard with expense tracking, bill management, and savings logging, powered by real-time sync via Supabase.',
+    features: [
+      'Comprehensive financial dashboard with real-time overview',
+      'Detailed expense tracking and categorization',
+      'Recurring bills and subscriptions management',
+      'Global savings ledger for monitoring wealth',
+      'Automatic Dark/Light Mode with glassmorphism aesthetics'
+    ],
+    tech: ['React', 'TypeScript', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Supabase'],
+    challenges: 'Ensuring seamless micro-animations and complex data state synchronization across the dashboard. Addressed by utilizing Framer Motion and efficient Supabase real-time subscriptions.',
+    liveUrl: '',
+    image: '/projects/finance.png'
+  },
+  {
     title: 'X32 Remote Toggle',
     tag: 'Automation',
     link: 'https://github.com/klaayd39/x32-channel-remote-toggle',
