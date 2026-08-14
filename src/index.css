@@ -1818,3 +1818,182 @@ textarea:focus-visible {
 .page-wrap {
   animation: pageFadeIn 0.5s ease-out forwards;
 }
+
+/* ─────────────────────────────────────────
+   UI/UX ENHANCEMENTS (Transitions, 3D, Spotlight, Skeletons)
+   ───────────────────────────────────────── */
+
+/* 1. View Transitions */
+::view-transition-group(*) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. Project Card 3D & Spotlight Hover */
+.project-card {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+  transform: perspective(1000px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg));
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(99, 102, 241, 0.15),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* Override existing hover transform to not conflict with JS 3D tilt */
+.project-card:hover {
+  transform: perspective(1000px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg)) translateY(-4px) scale3d(1.02, 1.02, 1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.15);
+}
+
+/* 3. Native Dialog Styles */
+.modal-dialog {
+  margin: auto;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-lg);
+  background: transparent;
+  width: 90%;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow: visible; /* Container handles overflow */
+  color: var(--white);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  animation: modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-dialog::backdrop {
+  background: rgba(11, 17, 32, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: backdropIn 0.4s ease forwards;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 4. Refined Skeleton Loader */
+.card-skeleton {
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.skeleton-image-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-card);
+}
+
+.skeleton-content {
+  padding: var(--card-pad);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.skeleton-tag {
+  width: 60px;
+  height: 24px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  margin-bottom: 12px;
+}
+
+.skeleton-title {
+  width: 70%;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  margin-bottom: 12px;
+}
+
+.skeleton-line {
+  height: 16px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  margin-bottom: 8px;
+}
+
+.skeleton-badges {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.skeleton-badge {
+  width: 50px;
+  height: 22px;
+  border-radius: 100px;
+  background: var(--bg-card);
+}
+
+.skeleton-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.skeleton-btn {
+  flex: 1;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.1) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import ScrollReveal from '../components/ScrollReveal'
 import ProjectModal from '../components/ProjectModal'
 
@@ -22,6 +22,40 @@ export default function Projects() {
     ? PROJECTS 
     : PROJECTS.filter((p) => p.tag === activeCategory)
 
+  const handleCategoryChange = (category) => {
+    if (!document.startViewTransition) {
+      setActiveCategory(category)
+      return
+    }
+    document.startViewTransition(() => {
+      setActiveCategory(category)
+    })
+  }
+
+  const handleMouseMove = (e, cardElement) => {
+    if (!cardElement) return
+    const rect = cardElement.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    
+    // For 3D tilt
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+    const rotateX = ((y - centerY) / centerY) * -10 // max 10 deg tilt
+    const rotateY = ((x - centerX) / centerX) * 10
+    
+    cardElement.style.setProperty('--mouse-x', `${x}px`)
+    cardElement.style.setProperty('--mouse-y', `${y}px`)
+    cardElement.style.setProperty('--rotate-x', `${rotateX}deg`)
+    cardElement.style.setProperty('--rotate-y', `${rotateY}deg`)
+  }
+
+  const handleMouseLeave = (cardElement) => {
+    if (!cardElement) return
+    cardElement.style.setProperty('--rotate-x', '0deg')
+    cardElement.style.setProperty('--rotate-y', '0deg')
+  }
+
   return (
     <div className="page-wrap">
       <Helmet>
@@ -43,7 +77,7 @@ export default function Projects() {
             <button
               key={category}
               className={`filter-tab${activeCategory === category ? ' active' : ''}`}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => handleCategoryChange(category)}
             >
               {category}
             </button>
@@ -54,13 +88,26 @@ export default function Projects() {
       {loading ? (
         <div className="project-grid" style={{ marginTop: '2rem' }}>
           {[1, 2, 3, 4, 5, 6].map((idx) => (
-            <div className="card-skeleton" key={idx}>
-              <div className="skeleton-image" />
-              <div className="skeleton-line title" />
-              <div className="skeleton-line text" />
-              <div className="skeleton-line text" />
-              <div className="skeleton-line short" />
-              <div className="skeleton-shimmer" />
+            <div className="card-skeleton glass" key={idx}>
+              <div className="skeleton-image-wrap shimmer" />
+              <div className="skeleton-content">
+                <div className="skeleton-tag shimmer" />
+                <div className="skeleton-title shimmer" />
+                <div className="skeleton-line shimmer" />
+                <div className="skeleton-line shimmer" style={{ width: '80%' }} />
+                <div className="skeleton-line shimmer" style={{ width: '60%', marginBottom: '1.25rem' }} />
+                
+                <div className="skeleton-badges">
+                  <div className="skeleton-badge shimmer" />
+                  <div className="skeleton-badge shimmer" />
+                  <div className="skeleton-badge shimmer" />
+                </div>
+                
+                <div className="skeleton-actions">
+                  <div className="skeleton-btn shimmer" />
+                  <div className="skeleton-btn shimmer" />
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -73,7 +120,12 @@ export default function Projects() {
               duration={600}
               key={project.title}
             >
-              <article className="project-card glass">
+              <article 
+                className="project-card glass"
+                style={{ viewTransitionName: `project-${project.title.replace(/[^a-zA-Z0-9]/g, '-')}` }}
+                onMouseMove={(e) => handleMouseMove(e, e.currentTarget)}
+                onMouseLeave={(e) => handleMouseLeave(e.currentTarget)}
+              >
                 <div className="project-card-image-wrap">
                   {project.image ? (
                     <img src={project.image} loading="lazy" alt={project.title} className="project-card-image" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />

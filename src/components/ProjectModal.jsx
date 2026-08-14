@@ -1,28 +1,49 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 export default function ProjectModal({ project, onClose }) {
-  // Lock scroll when open
+  const dialogRef = useRef(null)
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+
+    dialog.showModal()
+    
+    // Close modal when clicking on the backdrop
+    const handleBackdropClick = (e) => {
+      if (e.target === dialog) {
+        onClose()
+      }
+    }
+    
+    dialog.addEventListener('click', handleBackdropClick)
+    
+    return () => {
+      dialog.removeEventListener('click', handleBackdropClick)
+    }
+  }, [onClose])
+
+  // Native dialog already handles Escape key to close, so we just listen to the native close event
+  useEffect(() => {
+    const dialog = dialogRef.current
+    if (!dialog) return
+    
+    const handleNativeClose = () => onClose()
+    dialog.addEventListener('close', handleNativeClose)
+    return () => dialog.removeEventListener('close', handleNativeClose)
+  }, [onClose])
+
+  // Prevent scrolling on body when dialog is open (native dialog doesn't always block body scroll natively depending on content)
   useEffect(() => {
     document.body.style.overflow = 'hidden'
-    return () => {
-      document.body.style.overflow = ''
-    }
+    return () => { document.body.style.overflow = '' }
   }, [])
-
-  // Close on escape key
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') onClose()
-    }
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [onClose])
 
   if (!project) return null
 
   return (
-    <div className="modal-overlay" onClick={onClose} role="dialog" aria-modal="true">
-      <div className="modal-container glass" onClick={(e) => e.stopPropagation()}>
+    <dialog ref={dialogRef} className="modal-dialog glass" aria-label={project.title}>
+      <div className="modal-container" onClick={(e) => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose} aria-label="Close modal">
           ✕
         </button>
@@ -114,6 +135,6 @@ export default function ProjectModal({ project, onClose }) {
           </div>
         </div>
       </div>
-    </div>
+    </dialog>
   )
 }
