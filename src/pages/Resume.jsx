@@ -79,7 +79,7 @@ export default function Resume() {
 
               <div className="rv-job">
                 <div className="rv-job-header">
-                  <span className="rv-job-title">Software Automation Developer</span>
+                  <span className="rv-job-title">IT/Technician</span>
                   <span className="rv-job-period">2025 – Present</span>
                 </div>
                 <p className="rv-job-company">Bombo Radyo Malaybalay</p>
@@ -87,14 +87,17 @@ export default function Resume() {
                   <strong>Technologies:</strong> Python, JavaScript, React, REST APIs, Playwright, WebSockets, OSC, Git, Linux
                 </p>
                 <ul className="rv-job-list">
-                  <li>Built <strong>NewsPulse</strong>, an AI-powered news monitoring dashboard that aggregates 50+ live intelligence feeds, reducing manual news tracking time by approximately 80%.</li>
+                  <li>Built <strong>news-headline-crawler</strong>, an automated news headline crawler that gathers the latest news from various sources to build a centralized real-time intelligence board.</li>
+                  <li>Engineered the <strong>Bombo Radyo News Intelligence Hub</strong>, a full-stack platform aggregating 50+ live feeds and pushing breaking news alerts directly to Discord using webhooks.</li>
                   <li>Developed <strong>Nautel AUI Monitor</strong>, a real-time transmitter health dashboard with custom telemetry alerts, enabling 24/7 unattended monitoring and reducing equipment downtime.</li>
-                  <li>Designed <strong>Weather Overlay</strong>, a vector-based weather visualization engine with real-time REST API integration, deployed across live broadcast streams reaching 100K+ viewers.</li>
+                  <li>Developed <strong>Media Rename Automation</strong>, a PowerShell utility for batch-renaming video files using strict regex pattern matching, saving hours of manual data entry.</li>
                   <li>Programmed <strong>X32 Remote Toggle</strong> using OSC protocols for Behringer X32 mixers, achieving sub-50ms state synchronization and eliminating manual hardware switching.</li>
                   <li>Developed OBS automation tools (<strong>Media Automator</strong> &amp; <strong>OBS Scene Autosort</strong>) that reduced repetitive production setup time by approximately 70% and improved workflow consistency during live broadcasts.</li>
                   <li>Developed a <strong>Drama Report Generator</strong> using Raduga in VirtualBox, automating broadcast log and performance report generation and reducing manual data entry by approximately 90%, improving reporting efficiency and accuracy.</li>
                 </ul>
               </div>
+
+
 
               <div className="rv-job">
                 <div className="rv-job-header">
