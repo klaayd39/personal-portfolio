@@ -21,8 +21,7 @@ export default function Home() {
 
             <ScrollReveal direction="up" delay={200} duration={600}>
               <p className="subtitle-hero">
-                Building practical, elegant, and efficient solutions.
-                Specializing in workflow automation, real-time web applications, and broadcast systems telemetry.
+                Software Automation Developer | Python, React, Playwright, WebSockets | Building real-time broadcast systems @ Bombo Radyo Malaybalay 📡
               </p>
             </ScrollReveal>
 
